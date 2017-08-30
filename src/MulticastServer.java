@@ -18,6 +18,10 @@ public class MulticastServer {
         String userInput = new String(messageBuffer);
         System.out.println(userInput);
 
+        //Send a response to clients
+        DatagramPacket serverResponsePacket = new DatagramPacket(userInput.getBytes(), userInput.length(), address, 49321);
+        socket.send(serverResponsePacket);
+
         //Leave inet address and close socket
         socket.leaveGroup(address);
         socket.close();
