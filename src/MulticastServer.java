@@ -11,6 +11,9 @@ public class MulticastServer {
         MulticastSocket socket = new MulticastSocket(49321);
         socket.joinGroup(address);
 
+        //Create grid
+        Grid newGrid = new Grid();
+
         //Receive packet
         byte[] messageBuffer = new byte[1024];
         DatagramPacket receivedPacket = new DatagramPacket(messageBuffer, 1024);
