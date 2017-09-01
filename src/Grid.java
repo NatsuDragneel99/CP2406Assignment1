@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 
 public class Grid {
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.print("Enter height of grid (500-10000) >> ");
         String gridHeightString = input.nextLine();
@@ -22,12 +22,22 @@ public class Grid {
         for (int[] row : grid) {
             System.out.println(Arrays.toString(row));
         }
-        /*for (int[] row : grid) {
-            for (int[] col : grid) {
-                System.out.print(Arrays.toString(col));
-            }
-            System.out.println();
-        }*/
+    }*/
 
+    public int[][] createGrid(int gridHeight, int gridWidth) {
+        int[][] grid = new int[gridHeight][gridWidth];
+        for (int row = 0; row < gridWidth; ++row) {
+            for (int col = 0; col < gridHeight; ++col) {
+                grid[row][col] = 0;
+            }
+        }
+        return grid;
     }
+
+    public void printGrid(int[][] grid) {
+        for (int[] row : grid) {
+            System.out.println(Arrays.toString(row));
+        }
+    }
+
 }
