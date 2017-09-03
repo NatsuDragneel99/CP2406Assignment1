@@ -13,24 +13,25 @@ public class MulticastServer {
 
         //Create grid
         Grid newGrid = new Grid();
-        int[][] grid = newGrid.createGrid(10,10);
+        int[][] grid = newGrid.createGrid();
         newGrid.printGrid(grid);
 
 
-        //Receive packet
-        byte[] messageBuffer = new byte[1024];
-        DatagramPacket receivedPacket = new DatagramPacket(messageBuffer, 1024);
-        socket.receive(receivedPacket);
-        String userInput = new String(messageBuffer);
-        System.out.println(userInput);
+        while(true) {
+            //Receive packet
+            byte[] messageBuffer = new byte[1024];
+            DatagramPacket receivedPacket = new DatagramPacket(messageBuffer, 1024);
+            socket.receive(receivedPacket);
+            String userInput = new String(messageBuffer);
+            System.out.println(userInput);
 
-        //Send a response to clients
-        DatagramPacket serverResponsePacket = new DatagramPacket(userInput.getBytes(), userInput.length(), address, 49321);
-        socket.send(serverResponsePacket);
-
-        //Leave inet address and close socket
-        socket.leaveGroup(address);
-        socket.close();
+            //Send a response to clients
+            DatagramPacket serverResponsePacket = new DatagramPacket(userInput.getBytes(), userInput.length(), address, 49321);
+            socket.send(serverResponsePacket);
+        }
+            //Leave inet address and close socket
+            /*socket.leaveGroup(address);
+            socket.close();*/
 
 
     }
