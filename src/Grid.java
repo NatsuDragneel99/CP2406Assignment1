@@ -2,7 +2,9 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 
-public class Grid {
+public class Grid extends LightCycle {
+    LightCycle[] lightCycles = new LightCycle[20];
+
     public int[][] createGrid() {
         Scanner input = new Scanner(System.in);
         System.out.print("Enter height of grid (500-10000) >> ");
@@ -18,6 +20,11 @@ public class Grid {
             }
         }
         return grid;
+    }
+
+    public void addUser(int lightCycleNumber) {
+        this.createCycle(10,10);
+
     }
 
     public void printGrid(int[][] grid) {
