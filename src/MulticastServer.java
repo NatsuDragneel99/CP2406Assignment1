@@ -14,7 +14,7 @@ public class MulticastServer {
 
         //Create grid
         Grid newGrid = new Grid();
-        int[][] grid = newGrid.createGrid();
+        int[][] grid = newGrid.createGrid(10,10);
         newGrid.printGrid(grid);
 
         long timeSinceLastConnection = 0;
