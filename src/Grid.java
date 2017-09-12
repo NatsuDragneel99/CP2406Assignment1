@@ -17,8 +17,8 @@ public class Grid extends LightCycle {
         this.gridHeight = gridHeight;
         this.gridWidth = gridWidth;
         int[][] grid = new int[this.gridHeight][this.gridWidth];
-        for (int row = 0; row < gridWidth; ++row) {
-            for (int col = 0; col < gridHeight; ++col) {
+        for (int row = 0; row < gridHeight; row++) {
+            for (int col = 0; col < gridWidth; col++) {
                 grid[row][col] = 0;
             }
         }
