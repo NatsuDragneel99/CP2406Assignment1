@@ -1,15 +1,15 @@
 import java.util.Random;
 
 public class LightCycle {
-    int cycleYposition;
     int cycleXposition;
+    int cycleYposition;
+    int[] cyclePosition = new int[2];
     public void createCycle(int gridHeight, int gridWidth) {
         Random rand = new Random();
-        int randomPos1 = rand.nextInt(gridHeight) + 500;
-        int randomPos2 = rand.nextInt(gridWidth) + 500;
-        this.cycleYposition = randomPos1;
-        this.cycleXposition = randomPos2;
-
+        this.cycleXposition = rand.nextInt(gridWidth) + 500;
+        this.cycleYposition = rand.nextInt(gridHeight) + 500;
+        this.cyclePosition[0] = cycleXposition;
+        this.cyclePosition[1] = cycleYposition;
     }
 
     /*public int[] getCyclePosition() {

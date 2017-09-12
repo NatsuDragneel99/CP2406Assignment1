@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class TestUserStory1 {
     public static void main(String[] args) {
         //createGrid
-        Grid newGrid = new Grid();
+
 
         Scanner input = new Scanner(System.in);
         System.out.print("Enter height of grid (500-1000) >> ");
@@ -22,8 +22,8 @@ public class TestUserStory1 {
             gridWidthString = input.nextLine();
             gridWidth = Integer.parseInt(gridWidthString);
         }
-        int[][] grid = newGrid.createGrid(gridHeight, gridWidth);
-        newGrid.printGrid(grid);
+        Grid newGrid = new Grid(gridHeight, gridWidth);
+        newGrid.printGrid();
 
         //LightCycle user1 = newGrid.addUser(0);
         //LightCycle user2 = newGrid.addUser(1);

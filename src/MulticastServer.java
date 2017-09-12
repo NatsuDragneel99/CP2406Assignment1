@@ -13,9 +13,8 @@ public class MulticastServer {
         socket.joinGroup(address);
 
         //Create grid
-        Grid newGrid = new Grid();
-        int[][] grid = newGrid.createGrid(10,10);
-        newGrid.printGrid(grid);
+        Grid newGrid = new Grid(10,10);
+        newGrid.printGrid();
 
         long timeSinceLastConnection = 0;
         int userCount = 0;
