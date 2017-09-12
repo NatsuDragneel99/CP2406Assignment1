@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 
-public class Grid extends LightCycle {
+public class Grid {
     //LightCycle[] lightCycles = new LightCycle[20];
     private int gridHeight;
     private int gridWidth;
@@ -23,8 +23,16 @@ public class Grid extends LightCycle {
         }
     }
 
-    public void addUser(int lightCycleNumber) {
-        //this.createCycle(this.gridHeight,this.gridWidth);
+    public LightCycle addCycle() {
+        LightCycle cycle = new LightCycle(this.gridHeight, this.gridWidth);
+        for (int row = 0; row < gridHeight; row++) {
+            for (int col = 0; col < gridWidth; col++) {
+                if (row == cycle.cycleYposition && col == cycle.cycleXposition) {
+                    this.grid[row][col] = 1;
+                }
+            }
+        }
+        return cycle;
     }
 
     public void printGrid() {

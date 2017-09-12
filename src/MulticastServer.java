@@ -26,8 +26,8 @@ public class MulticastServer {
             String userInput = new String(messageBuffer);
             System.out.println(userInput);
 
-            newGrid.addUser(userCount);
-            userCount += 1;
+            /*newGrid.addUser(userCount);
+            userCount += 1;*/
 
 
             //Send a response to clients

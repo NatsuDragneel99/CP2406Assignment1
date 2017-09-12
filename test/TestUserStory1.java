@@ -24,11 +24,6 @@ public class TestUserStory1 {
         }
         Grid newGrid = new Grid(gridHeight, gridWidth);
         newGrid.printGrid();
-
-        //LightCycle user1 = newGrid.addUser(0);
-        //LightCycle user2 = newGrid.addUser(1);
-        //LightCycle user1 = newGrid.createCycle(10,10);
-
     }
 
 
