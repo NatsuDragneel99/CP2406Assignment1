@@ -25,7 +25,4 @@ public class TestUserStory1 {
         Grid newGrid = new Grid(gridHeight, gridWidth);
         newGrid.printGrid();
     }
-
-
-
 }
