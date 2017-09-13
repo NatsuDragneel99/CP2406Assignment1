@@ -5,6 +5,7 @@ public class Grid {
     private int gridHeight;
     private int gridWidth;
     int[][] grid;
+    int[] usedPositions;
 
     public Grid(int gridHeight, int gridWidth) {
         this.gridHeight = gridHeight;
@@ -25,7 +26,7 @@ public class Grid {
         LightCycle cycle = new LightCycle(this.gridHeight, this.gridWidth);
         for (int row = 0; row < gridHeight; row++) {
             for (int col = 0; col < gridWidth; col++) {
-                if (row == cycle.cycleYposition && col == cycle.cycleXposition) {
+                if (row == cycle.cyclePosition[1] && col == cycle.cyclePosition[2]) {
                     this.grid[row][col] = cycleNumber;
                 }
             }
