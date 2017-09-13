@@ -43,6 +43,10 @@ public class Grid {
         return cycle;
     }
 
+    public void startGame() {
+
+    }
+
     public void printGrid() {
         for (int[] row : this.grid) {
             System.out.println(Arrays.toString(row));

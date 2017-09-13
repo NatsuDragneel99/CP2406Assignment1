@@ -27,6 +27,12 @@ public class LightCycle {
         }
     }
 
+    public void moveCycle() {
+        if(this.cyclePosition[0] > this.cyclePosition[1]) {
+
+        }
+    }
+
     public void createCycle(int gridHeight, int gridWidth) {
 
     }
