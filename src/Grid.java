@@ -25,13 +25,6 @@ public class Grid {
 
     public LightCycle addCycle(int cycleNumber) {
         LightCycle cycle = new LightCycle(this.gridHeight, this.gridWidth, this.usedPositions);
-        /*for (int row = 0; row < gridHeight; row++) {
-            for (int col = 0; col < gridWidth; col++) {
-                if (row == cycle.cyclePosition[0] && col == cycle.cyclePosition[1]) {
-                    this.grid[row][col] = cycleNumber;
-                }
-            }
-        }*/
         this.grid[cycle.cyclePosition[0]][cycle.cyclePosition[1]] = cycleNumber;
         cycleNumber -= 1;
         this.usedPositions[cycleNumber] = cycle.cyclePosition;

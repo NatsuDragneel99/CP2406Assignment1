@@ -13,7 +13,10 @@ public class Client {
 
 
         //Create and send packet
-        String message = "TESTING";
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter message for server >> ");
+        String message = input.nextLine();
+
         DatagramPacket packet = new DatagramPacket(message.getBytes(), message.length(), address, 49321);
         socket.send(packet);
 
