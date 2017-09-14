@@ -4,7 +4,7 @@ import java.net.MulticastSocket;
 import java.net.DatagramPacket;
 import java.util.Scanner;
 
-public class Client {
+public class OldClientIgnore {
     public static void main(String[] args) throws Exception {
         //Connect socket to inet address
         InetAddress address = InetAddress.getByName("228.5.6.7");

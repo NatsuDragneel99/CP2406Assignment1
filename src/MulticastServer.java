@@ -5,13 +5,13 @@ import java.net.MulticastSocket;
 /**
  * Created by jc428209 on 14/09/17.
  */
-class MulticastServerNew {
+class MulticastServer {
     private InetAddress multicastIP;
     private int multicastPort;
     private MulticastSocket multicast;
     private String ip = InetAddress.getLocalHost().getHostAddress();
 
-    MulticastServerNew(String multicastIP, int multicastPort) throws Exception {
+    MulticastServer(String multicastIP, int multicastPort) throws Exception {
         this.multicastIP = InetAddress.getByName(multicastIP);
         this.multicastPort = multicastPort;
 

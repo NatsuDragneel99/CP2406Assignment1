@@ -5,10 +5,10 @@ import java.net.MulticastSocket;
 /**
  * Created by jc428209 on 14/09/17.
  */
-class ClientNew {
+class Client {
     private DatagramSocket direct;
 
-    ClientNew(int hostPort) throws Exception {
+    Client(int hostPort) throws Exception {
         direct = new DatagramSocket(hostPort);
 
     }
