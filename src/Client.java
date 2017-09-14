@@ -7,15 +7,16 @@ import java.net.MulticastSocket;
  */
 class Client {
     private DatagramSocket direct;
-
+    private int hostPort;
     Client(int hostPort) throws Exception {
+        this.hostPort = hostPort;
         direct = new DatagramSocket(hostPort);
 
     }
 
-    void send(String targetIP,int targetPort, String message) throws Exception {
+    void send(String targetIP, String message) throws Exception {
         InetAddress address = InetAddress.getByName(targetIP);
-        DatagramPacket packet = new DatagramPacket(message.getBytes(), message.length(), address, targetPort);
+        DatagramPacket packet = new DatagramPacket(message.getBytes(), message.length(), address, hostPort);
         direct.send(packet);
     }
 
