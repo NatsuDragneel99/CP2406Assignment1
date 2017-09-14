@@ -9,13 +9,13 @@ public class TestServerAndClient {
         ClientNew client = new ClientNew(49321);
 
         //Send a message to server from client
-        client.send(server.getIP(), server.getPort(), "TESTING");
+        client.send(server.getIP(), server.getPort(), "Client to server test");
         String message = server.read();
         System.out.println(message);
 
         //Broadcast a message from server and listen on client
-        server.broadcast("HELLO IIIIIIIIIIIIIII");
-        String clientMessage = client.listen(server.multicast);
+        server.broadcast("Server to client test");
+        String clientMessage = client.listen(server.getMulticast());
         System.out.println(clientMessage);
 
         //Close server

@@ -1,16 +1,10 @@
 import java.util.Random;
 import java.util.Arrays;
 
-public class LightCycle {
-    //int cycleXposition;
-    //int cycleYposition;
-    int gridHeight;
-    int gridWidth;
+class LightCycle {
     int[] cyclePosition = new int[2];
 
-    public LightCycle(int gridHeight, int gridWidth, int[][] usedPositions) {
-        this.gridHeight = gridHeight;
-        this.gridWidth = gridWidth;
+    LightCycle(int gridHeight, int gridWidth, int[][] usedPositions) {
         Random rand = new Random();
         this.cyclePosition[0] = rand.nextInt(gridWidth);
         this.cyclePosition[1] = rand.nextInt(gridHeight);
@@ -29,29 +23,29 @@ public class LightCycle {
         }
     }
 
-    public void moveCycle() {
+    void moveCycle() {
         /*if((this.gridWidth - this.cyclePosition[0]) > this.cyclePosition[1]) {
 
         }*/
     }
 
-    public void turnLeft() {
+    void turnLeft() {
 
     }
 
-    public void turnRight() {
+    void turnRight() {
 
     }
 
-    public void increaseSpeed() {
+    void increaseSpeed() {
 
     }
 
-    public void decreaseSpeed() {
+    void decreaseSpeed() {
 
     }
 
-    public void toggleLightWall() {
+    void toggleLightWall() {
 
     }
 }
