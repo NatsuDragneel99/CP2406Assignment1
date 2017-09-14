@@ -9,6 +9,7 @@ public class MulticastServerNew {
     InetAddress multicastIP;
     int multicastPort;
     MulticastSocket multicast;
+    String IP = InetAddress.getLocalHost().getHostAddress();
 
     public MulticastServerNew(String multicastIP, int multicastPort) throws Exception {
         this.multicastIP = InetAddress.getByName(multicastIP);
@@ -21,6 +22,14 @@ public class MulticastServerNew {
     public void broadcast(String message) throws Exception {
         DatagramPacket broadcastMessage = new DatagramPacket(message.getBytes(), message.length(), multicastIP, 49321);
         multicast.send(broadcastMessage);
+    }
+
+    public String getIP() {
+        return IP;
+    }
+
+    public int getPort() {
+        return multicastPort;
     }
 
     public String read() throws Exception {
