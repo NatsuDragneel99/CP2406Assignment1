@@ -14,8 +14,19 @@ public class Client {
 
         //Create and send packet
         Scanner input = new Scanner(System.in);
-        System.out.print("Enter message for server >> ");
+        System.out.println("Enter message for server:");
+        System.out.println("ADD USER");
+        System.out.println("REMOVE USER");
+        System.out.println("GRID SIZE");
+        System.out.println("GAME STATE");
+        System.out.println("SAVE SCORE");
+        System.out.println(">> ");
         String message = input.nextLine();
+
+        /*if(message.equals("ADD USER")) {
+            System.out.print("Enter user's name >> ");
+            message = input.nextLine();
+        }*/
 
         DatagramPacket packet = new DatagramPacket(message.getBytes(), message.length(), address, 49321);
         socket.send(packet);
@@ -27,6 +38,20 @@ public class Client {
         String serverResponse = new String(messageBuffer);
         System.out.println(serverResponse);
 
+        //Leave inet address and close socket
+        /*socket.leaveGroup(address);
+        socket.close();*/
+    }
+
+    public void send() {
+
+    }
+
+    public void listen() {
+
+    }
+
+    public void close() {
         //Leave inet address and close socket
         /*socket.leaveGroup(address);
         socket.close();*/

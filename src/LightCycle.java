@@ -35,11 +35,6 @@ public class LightCycle {
         }*/
     }
 
-    public void createCycle(int gridHeight, int gridWidth) {
-
-    }
-
-
     public void turnLeft() {
 
     }
@@ -53,6 +48,10 @@ public class LightCycle {
     }
 
     public void decreaseSpeed() {
+
+    }
+
+    public void toggleLightWall() {
 
     }
 }

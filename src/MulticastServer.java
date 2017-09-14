@@ -25,17 +25,19 @@ public class MulticastServer {
             DatagramPacket receivedPacket = new DatagramPacket(messageBuffer, 1024);
             socket.receive(receivedPacket);
             String userInput = new String(messageBuffer);
-            if(userInput.equals("ADD USER")) {
+            /*if(userInput.equals("ADD USER")) {
                 newGrid.addCycle(userCount);
                 newGrid.printGrid();
                 //Send a response to clients
                 DatagramPacket serverResponsePacket = new DatagramPacket("OKAY".getBytes(), "OKAY".length(), address, 49321);
                 socket.send(serverResponsePacket);
                 userCount += 1;
-            }
+            }*/
             System.out.println(userInput);
 
             //Send a response to clients
+            DatagramPacket serverResponsePacket = new DatagramPacket("OKAY".getBytes(), "OKAY".length(), address, 49321);
+            socket.send(serverResponsePacket);
         }
 
         /*while(userCount <= 20) {
@@ -57,5 +59,19 @@ public class MulticastServer {
             socket.close();*/
 
 
+    }
+
+    public void broadCast() {
+
+    }
+
+    public void read() {
+
+    }
+
+    public void close() {
+        //Leave inet address and close socket
+            /*socket.leaveGroup(address);
+            socket.close();*/
     }
 }
