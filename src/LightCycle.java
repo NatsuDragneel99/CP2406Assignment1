@@ -38,7 +38,7 @@ class LightCycle {
             this.cyclePosition[0] = cyclePosition[0] - 1;
             grid.getGrid()[cyclePosition[0]][cyclePosition[1]] = cycleNumber;
         } catch (ArrayIndexOutOfBoundsException hitWall) {
-            System.out.println("Cycle has crashed into wall");
+            System.out.println("A cycle has crashed into wall");
         }
     }
 
@@ -47,7 +47,7 @@ class LightCycle {
             this.cyclePosition[0] = cyclePosition[0] + 1;
             grid.getGrid()[cyclePosition[0]][cyclePosition[1]] = cycleNumber;
         } catch (ArrayIndexOutOfBoundsException hitWall) {
-            System.out.println("Cycle has crashed into wall");
+            System.out.println("A cycle has crashed into wall");
         }
     }
 
@@ -56,7 +56,7 @@ class LightCycle {
             this.cyclePosition[1] = cyclePosition[1] + 1;
             grid.getGrid()[cyclePosition[0]][cyclePosition[1]] = cycleNumber;
         } catch (ArrayIndexOutOfBoundsException hitWall) {
-            System.out.println("Cycle has crashed into wall");
+            System.out.println("A cycle has crashed into wall");
         }
     }
 
@@ -65,7 +65,7 @@ class LightCycle {
             this.cyclePosition[1] = cyclePosition[1] - 1;
             grid.getGrid()[cyclePosition[0]][cyclePosition[1]] = cycleNumber;
         } catch (ArrayIndexOutOfBoundsException hitWall) {
-            System.out.println("Cycle has crashed into wall");
+            System.out.println("A cycle has crashed into wall");
         }
 
     }
