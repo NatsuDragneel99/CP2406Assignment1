@@ -2,12 +2,10 @@ import java.util.Random;
 import java.util.Arrays;
 
 class LightCycle {
-    //int[][] grid;
-    int[] cyclePosition = new int[2];
-    int cycleNumber;
+    private int[] cyclePosition = new int[2];
+    private int cycleNumber;
 
     LightCycle(int gridHeight, int gridWidth, int cycleNumber, int[][] usedPositions) {
-        //this.grid = grid;
         this.cycleNumber = cycleNumber;
         Random rand = new Random();
         this.cyclePosition[0] = rand.nextInt(gridWidth);
@@ -27,24 +25,45 @@ class LightCycle {
         }
     }
 
+    int[] getCyclePosition() {
+        return cyclePosition;
+    }
+
     void moveUp(Grid grid) {
-        this.cyclePosition[0] = cyclePosition[0] + 1;
-        grid.getGrid()[cyclePosition[0]][cyclePosition[1]] = cycleNumber;
+        try {
+            this.cyclePosition[0] = cyclePosition[0] - 1;
+            grid.getGrid()[cyclePosition[0]][cyclePosition[1]] = cycleNumber;
+        } catch (ArrayIndexOutOfBoundsException hitWall) {
+            System.out.println("Cycle dead");
+        }
     }
 
     void moveDown(Grid grid) {
-        this.cyclePosition[0] = cyclePosition[0] - 1;
-        grid.getGrid()[cyclePosition[0]][cyclePosition[1]] = cycleNumber;
+        try {
+            this.cyclePosition[0] = cyclePosition[0] + 1;
+            grid.getGrid()[cyclePosition[0]][cyclePosition[1]] = cycleNumber;
+        } catch (ArrayIndexOutOfBoundsException hitWall) {
+            System.out.println("Cycle dead");
+        }
     }
 
     void moveRight(Grid grid) {
-        this.cyclePosition[1] = cyclePosition[1] + 1;
-        grid.getGrid()[cyclePosition[0]][cyclePosition[1]] = cycleNumber;
+        try {
+            this.cyclePosition[1] = cyclePosition[1] + 1;
+            grid.getGrid()[cyclePosition[0]][cyclePosition[1]] = cycleNumber;
+        } catch (ArrayIndexOutOfBoundsException hitWall) {
+            System.out.println("Cycle dead");
+        }
     }
 
     void moveLeft(Grid grid) {
-        this.cyclePosition[1] = cyclePosition[1] - 1;
-        grid.getGrid()[cyclePosition[0]][cyclePosition[1]] = cycleNumber;
+        try {
+            this.cyclePosition[1] = cyclePosition[1] - 1;
+            grid.getGrid()[cyclePosition[0]][cyclePosition[1]] = cycleNumber;
+        } catch (ArrayIndexOutOfBoundsException hitWall) {
+            System.out.println("Cycle dead");
+        }
+
     }
 
     void increaseSpeed() {
@@ -56,6 +75,6 @@ class LightCycle {
     }
 
     void toggleLightWall() {
-        
+
     }
 }

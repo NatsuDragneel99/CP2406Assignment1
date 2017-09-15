@@ -25,9 +25,9 @@ class Grid {
 
     LightCycle addCycle(int cycleNumber) {
         LightCycle cycle = new LightCycle(gridHeight, gridWidth, cycleNumber, usedPositions);
-        this.grid[cycle.cyclePosition[0]][cycle.cyclePosition[1]] = cycleNumber;
+        this.grid[cycle.getCyclePosition()[0]][cycle.getCyclePosition()[1]] = cycleNumber;
         cycleNumber -= 1;
-        this.usedPositions[cycleNumber] = cycle.cyclePosition;
+        this.usedPositions[cycleNumber] = cycle.getCyclePosition();
         /*for (int[] position : this.usedPositions) {
             if(position != null) {
                 System.out.println(Arrays.toString(position));
