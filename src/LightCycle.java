@@ -28,22 +28,34 @@ class LightCycle {
     }
 
     void moveUp(Grid grid) {
-        cyclePosition[0] = cyclePosition[0] + 1;
+        this.cyclePosition[0] = cyclePosition[0] + 1;
         grid.getGrid()[cyclePosition[0]][cyclePosition[1]] = cycleNumber;
     }
 
     void moveDown(Grid grid) {
-        cyclePosition[0] = cyclePosition[0] - 1;
+        this.cyclePosition[0] = cyclePosition[0] - 1;
         grid.getGrid()[cyclePosition[0]][cyclePosition[1]] = cycleNumber;
     }
 
     void moveRight(Grid grid) {
-        cyclePosition[1] = cyclePosition[1] + 1;
+        this.cyclePosition[1] = cyclePosition[1] + 1;
         grid.getGrid()[cyclePosition[0]][cyclePosition[1]] = cycleNumber;
     }
 
     void moveLeft(Grid grid) {
-        cyclePosition[1] = cyclePosition[1] - 1;
+        this.cyclePosition[1] = cyclePosition[1] - 1;
         grid.getGrid()[cyclePosition[0]][cyclePosition[1]] = cycleNumber;
+    }
+
+    void increaseSpeed() {
+
+    }
+
+    void decreaseSpeed() {
+
+    }
+
+    void toggleLightWall() {
+        
     }
 }
