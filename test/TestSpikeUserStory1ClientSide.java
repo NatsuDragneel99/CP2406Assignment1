@@ -7,8 +7,12 @@ public class TestSpikeUserStory1ClientSide {
         MulticastServer server = new MulticastServer("228.5.6.7",49321);
         Client client = new Client(server.getPort());
 
-        client.send(server.getIP(), "Hello server can you hear me?");
+        String message = "Hello server can you hear me?";
+        client.send(server.getIP(), message);
+        System.out.println("Message sent >> " + message);
+
         String serverMessage = client.listen(server.getMulticast());
         System.out.println(serverMessage);
     }
 }
+

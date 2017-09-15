@@ -2,9 +2,13 @@ import java.util.Random;
 import java.util.Arrays;
 
 class LightCycle {
+    //int[][] grid;
     int[] cyclePosition = new int[2];
+    int cycleNumber;
 
-    LightCycle(int gridHeight, int gridWidth, int[][] usedPositions) {
+    LightCycle(int gridHeight, int gridWidth, int cycleNumber, int[][] usedPositions) {
+        //this.grid = grid;
+        this.cycleNumber = cycleNumber;
         Random rand = new Random();
         this.cyclePosition[0] = rand.nextInt(gridWidth);
         this.cyclePosition[1] = rand.nextInt(gridHeight);
@@ -23,29 +27,23 @@ class LightCycle {
         }
     }
 
-    void moveCycle() {
-        /*if((this.gridWidth - this.cyclePosition[0]) > this.cyclePosition[1]) {
-
-        }*/
+    void moveUp(Grid grid) {
+        cyclePosition[0] = cyclePosition[0] + 1;
+        grid.getGrid()[cyclePosition[0]][cyclePosition[1]] = cycleNumber;
     }
 
-    void turnLeft() {
-
+    void moveDown(Grid grid) {
+        cyclePosition[0] = cyclePosition[0] - 1;
+        grid.getGrid()[cyclePosition[0]][cyclePosition[1]] = cycleNumber;
     }
 
-    void turnRight() {
-
+    void moveRight(Grid grid) {
+        cyclePosition[1] = cyclePosition[1] + 1;
+        grid.getGrid()[cyclePosition[0]][cyclePosition[1]] = cycleNumber;
     }
 
-    void increaseSpeed() {
-
-    }
-
-    void decreaseSpeed() {
-
-    }
-
-    void toggleLightWall() {
-
+    void moveLeft(Grid grid) {
+        cyclePosition[1] = cyclePosition[1] - 1;
+        grid.getGrid()[cyclePosition[0]][cyclePosition[1]] = cycleNumber;
     }
 }

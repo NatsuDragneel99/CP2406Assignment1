@@ -15,7 +15,7 @@ class Grid {
     }
 
     private void createGrid() {
-        this.grid = new int[this.gridHeight][this.gridWidth];
+        this.grid = new int[gridHeight][gridWidth];
         for (int row = 0; row < gridHeight; row++) {
             for (int col = 0; col < gridWidth; col++) {
                 this.grid[row][col] = 0;
@@ -24,7 +24,7 @@ class Grid {
     }
 
     LightCycle addCycle(int cycleNumber) {
-        LightCycle cycle = new LightCycle(this.gridHeight, this.gridWidth, this.usedPositions);
+        LightCycle cycle = new LightCycle(gridHeight, gridWidth, cycleNumber, usedPositions);
         this.grid[cycle.cyclePosition[0]][cycle.cyclePosition[1]] = cycleNumber;
         cycleNumber -= 1;
         this.usedPositions[cycleNumber] = cycle.cyclePosition;
@@ -38,6 +38,10 @@ class Grid {
 
     void startGame() {
 
+    }
+
+    public int[][] getGrid() {
+        return grid;
     }
 
     void printGrid() {
