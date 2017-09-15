@@ -1,3 +1,6 @@
+/**
+ * Michael Koppen CP2406 Assignment 1
+ */
 import java.util.Scanner;
 
 public class TestUserStory1 {

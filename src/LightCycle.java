@@ -1,3 +1,7 @@
+/**
+ * Michael Koppen CP2406 Assignment 1
+ */
+
 import java.util.Random;
 import java.util.Arrays;
 
@@ -34,7 +38,7 @@ class LightCycle {
             this.cyclePosition[0] = cyclePosition[0] - 1;
             grid.getGrid()[cyclePosition[0]][cyclePosition[1]] = cycleNumber;
         } catch (ArrayIndexOutOfBoundsException hitWall) {
-            System.out.println("Cycle dead");
+            System.out.println("Cycle has crashed into wall");
         }
     }
 
@@ -43,7 +47,7 @@ class LightCycle {
             this.cyclePosition[0] = cyclePosition[0] + 1;
             grid.getGrid()[cyclePosition[0]][cyclePosition[1]] = cycleNumber;
         } catch (ArrayIndexOutOfBoundsException hitWall) {
-            System.out.println("Cycle dead");
+            System.out.println("Cycle has crashed into wall");
         }
     }
 
@@ -52,7 +56,7 @@ class LightCycle {
             this.cyclePosition[1] = cyclePosition[1] + 1;
             grid.getGrid()[cyclePosition[0]][cyclePosition[1]] = cycleNumber;
         } catch (ArrayIndexOutOfBoundsException hitWall) {
-            System.out.println("Cycle dead");
+            System.out.println("Cycle has crashed into wall");
         }
     }
 
@@ -61,7 +65,7 @@ class LightCycle {
             this.cyclePosition[1] = cyclePosition[1] - 1;
             grid.getGrid()[cyclePosition[0]][cyclePosition[1]] = cycleNumber;
         } catch (ArrayIndexOutOfBoundsException hitWall) {
-            System.out.println("Cycle dead");
+            System.out.println("Cycle has crashed into wall");
         }
 
     }

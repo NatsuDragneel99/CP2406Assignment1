@@ -1,5 +1,5 @@
 /**
- * Created by jc428209 on 12/09/17.
+ * Michael Koppen CP2406 Assignment 1
  */
 public class testUserStory2and3 {
     public static void main(String[] args) {

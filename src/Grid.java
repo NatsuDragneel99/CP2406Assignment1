@@ -1,3 +1,7 @@
+/**
+ * Michael Koppen CP2406 Assignment 1
+ */
+
 import java.util.Arrays;
 
 class Grid {

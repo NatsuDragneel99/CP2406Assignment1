@@ -1,10 +1,11 @@
+/**
+ * Michael Koppen CP2406 Assignment 1
+ */
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
 
-/**
- * Created by jc428209 on 14/09/17.
- */
+
 class MulticastServer {
     private InetAddress multicastIP;
     private int multicastPort;

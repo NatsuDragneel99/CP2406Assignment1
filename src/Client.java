@@ -1,10 +1,11 @@
+/**
+ * Michael Koppen CP2406 Assignment 1
+ */
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.DatagramSocket;
 import java.net.MulticastSocket;
-/**
- * Created by jc428209 on 14/09/17.
- */
+
 class Client {
     private DatagramSocket direct;
     private int hostPort;
