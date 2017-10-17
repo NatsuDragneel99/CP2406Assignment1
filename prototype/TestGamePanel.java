@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class TestGamePanel extends JPanel implements ActionListener,KeyListener {
+public class TestGamePanel extends JPanel implements ActionListener {
     private int x = 50;
     private int y = 50;
     private int xVelocity = 1;
@@ -16,6 +16,8 @@ public class TestGamePanel extends JPanel implements ActionListener,KeyListener 
         setDoubleBuffered(true);
         t = new Timer(7, this);
         t.start();
+
+
     }
 
     @Override
@@ -23,7 +25,8 @@ public class TestGamePanel extends JPanel implements ActionListener,KeyListener 
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.fillRect(x, y, 10, 10);
-
+        myComponent.getInputMap().put(KeyStroke.getKeyStroke("DOWN"), moveDown());
+        //myComponent.getActionMap().put("myAction", moveDown());
     }
 
     void moveUp() {
@@ -50,29 +53,4 @@ public class TestGamePanel extends JPanel implements ActionListener,KeyListener 
         repaint();
     }
 
-    @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_UP) {
-            moveUp();
-        }
-        if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-            moveDown();
-        }
-        if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-            moveLeft();
-        }
-        if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            moveRight();
-        }
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-
-    }
 }
