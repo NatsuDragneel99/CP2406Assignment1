@@ -17,15 +17,19 @@ public class GamePanel extends JFrame{
         setTitle("TRON");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(900,900);
-        for (int row = 0; row < gridHeight; row++) {
-            for (int col = 0; col < gridWidth; col++) {
-                GridTile tile = new GridTile();
-                tile.putClientProperty("row", row);
-                tile.putClientProperty("col", col);
-                gamePanel.add(tile);
-                this.grid[row][col] = tile;
-            }
-        }
+
+        JButton tile = new JButton();
+        gamePanel.add(tile);
+
+        //for (int row = 0; row < gridHeight; row++) {
+        //    for (int col = 0; col < gridWidth; col++) {
+        //        GridTile tile = new GridTile();
+        //        tile.putClientProperty("row", row);
+        //        tile.putClientProperty("col", col);
+        //        gamePanel.add(tile);
+        //        this.grid[row][col] = tile;
+        //    }
+        //}
 
 
 
@@ -64,10 +68,10 @@ public class GamePanel extends JFrame{
         //}
     }
     public static void main(String[] args) {
-        GamePanel panel = new GamePanel(200, 200);
+        GamePanel panel = new GamePanel(500, 500);
         panel.setVisible(true);
-        System.out.println(panel.grid[0][6].getClientProperty("row"));
-        System.out.println(panel.grid[0][6].getClientProperty("col"));
-        panel.addCycle();
+        //System.out.println(panel.grid[0][6].getClientProperty("row"));
+        //System.out.println(panel.grid[0][6].getClientProperty("col"));
+        //panel.addCycle();
     }
 }
