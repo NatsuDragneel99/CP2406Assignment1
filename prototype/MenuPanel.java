@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MenuPanel extends JPanel {
-
+    String userName;
 
 
 
@@ -33,8 +33,7 @@ public class MenuPanel extends JPanel {
         addUserButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String userName = addUserText.getText();
-                System.out.println(userName);
+                userName = addUserText.getText();
                 addUserFrame.dispose();
             }
         });
@@ -42,6 +41,8 @@ public class MenuPanel extends JPanel {
         addUserPanel.add(addUserText);
         addUserPanel.add(addUserButton);
     }
+
+
 
     public static void main(String[] args) {
         MenuPanel test = new MenuPanel();

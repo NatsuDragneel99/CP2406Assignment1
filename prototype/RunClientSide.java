@@ -6,6 +6,11 @@ public class RunClientSide {
     public static void main(String[] args) throws Exception{
         GameFrame gameFrame = new GameFrame(10, 10);
 
+        if(gameFrame.userName.equals("TEST")) {
+            gameFrame.closeMenu();
+        }
+
+
         //MulticastServer server = new MulticastServer("228.5.6.7",49321);
         //Client client = new Client(server.getPort());
 //
