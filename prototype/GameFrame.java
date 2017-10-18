@@ -19,8 +19,8 @@ public class GameFrame extends JFrame {
         setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
-        menuPanel = loadMenu();
-        menuPanel.userName = userName;
+        //menuPanel = loadMenu();
+        //menuPanel.userName = userName;
 
 
         //JPanel gamePanel = new JPanel();
