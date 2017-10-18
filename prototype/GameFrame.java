@@ -17,7 +17,7 @@ public class GameFrame extends JFrame {
         setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
-        add(new TestGamePanel());
+        loadMenu();
 
         //JPanel gamePanel = new JPanel();
         //gamePanel.setLayout(new GridBagLayout());
@@ -33,10 +33,16 @@ public class GameFrame extends JFrame {
 
 
     }
-
-    public static void main(String[] args) {
-        GameFrame panel = new GameFrame(10, 10);
-
+    void loadMenu() {
+        this.add(new MenuPanel());
     }
+    void loadGame() {
+        this.add(new TestGamePanel());
+    }
+
+    //public static void main(String[] args) {
+    //    GameFrame panel = new GameFrame(10, 10);
+//
+    //}
 
 }

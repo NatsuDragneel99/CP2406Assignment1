@@ -3,14 +3,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.KeyStroke;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 public class TestGamePanel extends JPanel implements ActionListener {
     private int x = 50;
     private int y = 50;
     private int xVelocity = 1;
     private int yVelocity = 0;
+    private ArrayList usedCoordinates = new ArrayList();
     private Timer t;
 
     public TestGamePanel() {
@@ -35,7 +35,7 @@ public class TestGamePanel extends JPanel implements ActionListener {
         //super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(Color.cyan);
-        g2d.fillRect(x, y, 50, 50);
+        g2d.fillRect(x, y, 10, 10);
         //myComponent.getInputMap().put(KeyStroke.getKeyStroke("DOWN"), moveDown());
         //myComponent.getActionMap().put("myAction", moveDown());
     }
@@ -93,6 +93,7 @@ public class TestGamePanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         x = x + xVelocity;
         y = y + yVelocity;
+        usedCoordinates.add(x + "," + y);
         repaint();
     }
 
