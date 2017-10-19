@@ -7,7 +7,6 @@ public class MenuPanel extends JPanel {
     String userName;
 
 
-
     public MenuPanel() {
         setLayout(new FlowLayout());
         setVisible(true);
@@ -23,6 +22,7 @@ public class MenuPanel extends JPanel {
 
     private void displayAddUserFrame() {
         JFrame addUserFrame = new JFrame();
+        addUserFrame.setLocationRelativeTo(this);
         addUserFrame.setResizable(false);
         addUserFrame.setVisible(true);
         addUserFrame.setSize(100,100);

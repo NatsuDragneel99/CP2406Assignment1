@@ -9,6 +9,7 @@ public class RunClientSide {
         System.out.println(gameFrame.userName);
 
 
+
         //MulticastServer server = new MulticastServer("228.5.6.7",49321);
         //Client client = new Client(server.getPort());
 //
