@@ -39,7 +39,7 @@ public class GameFrame extends JFrame {
 
     }
     void loadMenu() {
-        MenuPanel menuPanel = new MenuPanel();
+        MenuPanel menuPanel = new MenuPanel(this);
         menuPanel.userName = userName;
         this.add(menuPanel);
     }

@@ -5,9 +5,10 @@ import java.awt.event.ActionListener;
 
 public class MenuPanel extends JPanel {
     String userName;
+    JFrame gameFrame;
 
-
-    public MenuPanel() {
+    public MenuPanel(JFrame gameFrame) {
+        this.gameFrame = gameFrame;
         setLayout(new FlowLayout());
         setVisible(true);
         JButton joinGame = new JButton("Join Game");
@@ -35,6 +36,7 @@ public class MenuPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 userName = addUserText.getText();
                 addUserFrame.dispose();
+                gameFrame.remove(this); //why this not work?
             }
         });
         addUserFrame.add(addUserPanel);
@@ -45,6 +47,6 @@ public class MenuPanel extends JPanel {
 
 
     public static void main(String[] args) {
-        MenuPanel test = new MenuPanel();
+        //MenuPanel test = new MenuPanel();
     }
 }
