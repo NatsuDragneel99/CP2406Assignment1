@@ -8,7 +8,9 @@ public class GameFrame extends JFrame {
     int gridHeight;
     int gridWidth;
     MenuPanel menuPanel;
+    TestGamePanel gamePanel;
     String userName;
+
 
     GameFrame(int gridHeight, int gridWidth) {
         this.gridHeight = gridHeight;
@@ -20,8 +22,9 @@ public class GameFrame extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
-        //menuPanel = loadMenu();
-        //menuPanel.userName = userName;
+        menuPanel = new MenuPanel();
+        gamePanel = new TestGamePanel();
+
 
 
         //JPanel gamePanel = new JPanel();
@@ -39,13 +42,12 @@ public class GameFrame extends JFrame {
 
     }
     void loadMenu() {
-        MenuPanel menuPanel = new MenuPanel(this);
         menuPanel.userName = userName;
-        this.add(menuPanel);
+        add(menuPanel);
     }
 
     void loadGame() {
-        this.add(new TestGamePanel());
+        add(gamePanel);
     }
 
     void closeMenu() {
@@ -53,7 +55,7 @@ public class GameFrame extends JFrame {
     }
 
     void closeGame() {
-
+        remove(gamePanel);
     }
 
     //public static void main(String[] args) {

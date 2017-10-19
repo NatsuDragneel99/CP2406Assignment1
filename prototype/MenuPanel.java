@@ -5,10 +5,9 @@ import java.awt.event.ActionListener;
 
 public class MenuPanel extends JPanel {
     String userName;
-    JFrame gameFrame;
 
-    public MenuPanel(JFrame gameFrame) {
-        this.gameFrame = gameFrame;
+    public MenuPanel() {
+
         setLayout(new FlowLayout());
         setVisible(true);
         JButton joinGame = new JButton("Join Game");
@@ -36,7 +35,8 @@ public class MenuPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 userName = addUserText.getText();
                 addUserFrame.dispose();
-                gameFrame.remove(this); //why this not work?
+                joinGame();
+                //gameFrame.remove(this); //why this not work?
             }
         });
         addUserFrame.add(addUserPanel);
@@ -44,6 +44,17 @@ public class MenuPanel extends JPanel {
         addUserPanel.add(addUserButton);
     }
 
+    private void joinGame() {
+        try {
+            MulticastServer server = new MulticastServer("228.5.6.7",49321);
+            Client client = new Client(server.getPort());
+            String message = "ADD USER" + userName;
+            client.send(server.getIP(), message);
+            System.out.println(message);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 
     public static void main(String[] args) {

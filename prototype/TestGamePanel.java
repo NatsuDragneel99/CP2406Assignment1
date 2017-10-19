@@ -36,8 +36,7 @@ public class TestGamePanel extends JPanel implements ActionListener {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(Color.cyan);
         g2d.fillRect(x, y, 10, 10);
-        //myComponent.getInputMap().put(KeyStroke.getKeyStroke("DOWN"), moveDown());
-        //myComponent.getActionMap().put("myAction", moveDown());
+
     }
 
     Action upAction = new AbstractAction() {
