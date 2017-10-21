@@ -9,7 +9,8 @@ public class TestSpikeUserStory1 {
         Client client = new Client(server.getPort());
 
         //Send a message to server from client
-        client.send(server.getIP(), "Hello can you hear me?");
+        System.out.println(server.getIP());
+        client.send("10.178.246.25", "Hello can you hear me?");
         String message = server.read();
         System.out.println(message);
 

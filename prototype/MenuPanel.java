@@ -5,51 +5,37 @@ import java.awt.event.ActionListener;
 
 public class MenuPanel extends JPanel {
     String userName;
+    Client client;
 
-    public MenuPanel() {
+    public MenuPanel(){
 
         setLayout(new FlowLayout());
         setVisible(true);
         JButton joinGame = new JButton("Join Game");
+        try {
+            this.client = new Client(49322);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
         joinGame.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 displayAddUserFrame();
+                joinGame();
             }
         });
         add(joinGame);
     }
 
     private void displayAddUserFrame() {
-        JFrame addUserFrame = new JFrame();
-        addUserFrame.setLocationRelativeTo(this);
-        addUserFrame.setResizable(false);
-        addUserFrame.setVisible(true);
-        addUserFrame.setSize(100,100);
-        JPanel addUserPanel = new JPanel();
-        addUserPanel.setLayout(new FlowLayout());
-        JTextField addUserText = new JTextField(10);
-        JButton addUserButton = new JButton("GO");
-        addUserButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                userName = addUserText.getText();
-                addUserFrame.dispose();
-                joinGame();
-                //gameFrame.remove(this); //why this not work?
-            }
-        });
-        addUserFrame.add(addUserPanel);
-        addUserPanel.add(addUserText);
-        addUserPanel.add(addUserButton);
+        this.userName = JOptionPane.showInputDialog("Enter Username");
     }
 
     private void joinGame() {
         try {
-            MulticastServer server = new MulticastServer("228.5.6.7",49321);
-            Client client = new Client(server.getPort());
-            String message = "ADD USER" + userName;
-            client.send(server.getIP(), message);
+            String message = "ADD USER " + userName;
+            client.send("10.178.246.25", message);
             System.out.println(message);
         }catch (Exception e) {
             e.printStackTrace();
