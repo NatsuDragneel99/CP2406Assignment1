@@ -8,16 +8,15 @@ import java.net.MulticastSocket;
 
 class Client {
     private DatagramSocket direct;
-    private int hostPort;
+    private int serverPort = 49321;
     Client(int hostPort) throws Exception {
-        this.hostPort = hostPort;
         direct = new DatagramSocket(hostPort);
 
     }
 
     void send(String targetIP, String message) throws Exception {
         InetAddress address = InetAddress.getByName(targetIP);
-        DatagramPacket packet = new DatagramPacket(message.getBytes(), message.length(), address, hostPort);
+        DatagramPacket packet = new DatagramPacket(message.getBytes(), message.length(), address, serverPort);
         direct.send(packet);
     }
 

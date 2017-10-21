@@ -22,7 +22,9 @@ public class MenuPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 displayAddUserFrame();
-                joinGame();
+                if(userName != null) {
+                    joinGame();
+                }
             }
         });
         add(joinGame);
@@ -40,6 +42,7 @@ public class MenuPanel extends JPanel {
         }catch (Exception e) {
             e.printStackTrace();
         }
+        GamePanel gamePanel = new GamePanel(10,10);
     }
 
 
