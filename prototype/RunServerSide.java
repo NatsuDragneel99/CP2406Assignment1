@@ -3,8 +3,17 @@ public class RunServerSide {
 
         MulticastServer server = new MulticastServer("228.5.6.7",49321);
 
-        String message = server.read();
-        System.out.println(message);
-        server.broadcast("Message received loud and clear >> " + message);
+        while(true) {
+            String message = server.read();
+            System.out.println(message);
+
+            if(message.startsWith("ADD USER")) {
+                server.broadcast("OKAY");
+            }
+
+
+
+        }
+
     }
 }

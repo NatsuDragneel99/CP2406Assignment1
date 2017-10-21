@@ -2,10 +2,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.MulticastSocket;
 
 public class MenuPanel extends JPanel {
     String userName;
     Client client;
+    MulticastSocket multicast;
 
     public MenuPanel(){
 
@@ -14,6 +16,7 @@ public class MenuPanel extends JPanel {
         JButton joinGame = new JButton("Join Game");
         try {
             this.client = new Client(49322);
+            this.multicast = new MulticastSocket(49321);
         }catch (Exception e) {
             e.printStackTrace();
         }
@@ -24,6 +27,13 @@ public class MenuPanel extends JPanel {
                 displayAddUserFrame();
                 if(userName != null) {
                     joinGame();
+                    try {
+                        String responseMessage = client.listen(multicast);
+                        System.out.println(responseMessage);
+                    }catch (Exception error) {
+                        error.printStackTrace();
+                    }
+
                 }
             }
         });
