@@ -8,10 +8,12 @@ public class MenuPanel extends JPanel {
     String SERVERIP = "10.140.33.213";
     String userName;
     Client client;
+    GameFrame gameFrame;
     MulticastServer server;
     boolean userAdded;
 
-    public MenuPanel(){
+    public MenuPanel(GameFrame gameFrame){
+        this.gameFrame = gameFrame;
         //JFrame test = new JFrame();
         //test.setSize(900,900);
         //test.add(this);
@@ -36,6 +38,7 @@ public class MenuPanel extends JPanel {
                 displayAddUserFrame();
                 if(userName != null) {
                     addUser();
+                    gameFrame.startGame();
                 }
             }
         });
@@ -64,7 +67,7 @@ public class MenuPanel extends JPanel {
     }
 
 
-    public static void main(String[] args) {
-        MenuPanel test = new MenuPanel();
-    }
+   // public static void main(String[] args) {
+   //     MenuPanel test = new MenuPanel(gameFrame);
+   // }
 }

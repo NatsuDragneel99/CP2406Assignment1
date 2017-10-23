@@ -29,8 +29,16 @@ public class RunServerSide {
 
             if(message.startsWith("ADD USER")) {
                 server.broadcast("OKAY");
+            } else if(message.startsWith("REMOVE USER")) {
+
             } else if(message.startsWith("GRID SIZE")) {
                 server.broadcast(gridHeightString + "," + gridWidthString);
+            } else if(message.startsWith("GAME STATE")) {
+
+            } else if(message.startsWith("SAVE SCORE")) {
+
+            } else if(message.startsWith("GAME LEADERBOARD")) {
+
             }
 
 

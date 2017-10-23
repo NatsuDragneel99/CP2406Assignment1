@@ -39,7 +39,7 @@ public class GameFrame extends JFrame {
 
     }
     void loadMenu() {
-        menuPanel = new MenuPanel();
+        menuPanel = new MenuPanel(this);
         add(menuPanel);
     }
 
@@ -48,8 +48,13 @@ public class GameFrame extends JFrame {
         add(gamePanel);
     }
 
-    void closeMenu() {
-        remove(menuPanel);
+    void startGame() {
+        gamePanel = new GamePanel();
+        setContentPane(gamePanel);
+        invalidate();
+        validate();
+        repaint();
+        setVisible(true);
     }
 
     void closeGame() {
