@@ -8,12 +8,13 @@ public class MenuPanel extends JPanel {
     String userName;
     Client client;
     MulticastSocket multicast;
+    boolean userAdded;
 
     public MenuPanel(){
-
         setLayout(new FlowLayout());
         setVisible(true);
         JButton joinGame = new JButton("Join Game");
+
         try {
             this.client = new Client(49322);
             this.multicast = new MulticastSocket(49321);
@@ -52,7 +53,10 @@ public class MenuPanel extends JPanel {
         }catch (Exception e) {
             e.printStackTrace();
         }
-        GamePanel gamePanel = new GamePanel(10,10);
+
+        this.getParent().remove(this);
+        revalidate();
+        repaint();
     }
 
 
