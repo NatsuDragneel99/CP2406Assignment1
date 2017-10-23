@@ -28,7 +28,9 @@ public class RunServerSide {
             System.out.println(message);
 
             if(message.startsWith("ADD USER")) {
-                server.broadcast("OKAY" + gridHeightString + gridWidthString);
+                server.broadcast("OKAY");
+            } else if(message.startsWith("GRID SIZE")) {
+                server.broadcast(gridHeightString + "," + gridWidthString);
             }
 
 

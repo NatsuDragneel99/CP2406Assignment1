@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.net.MulticastSocket;
 
 public class MenuPanel extends JPanel {
+    String SERVERIP = "10.140.33.213";
     String userName;
     Client client;
     MulticastServer server;
@@ -32,11 +33,9 @@ public class MenuPanel extends JPanel {
         joinGame.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 displayAddUserFrame();
                 if(userName != null) {
-                    joinGame();
-
+                    addUser();
                 }
             }
         });
@@ -47,17 +46,19 @@ public class MenuPanel extends JPanel {
         this.userName = JOptionPane.showInputDialog("Enter Username");
     }
 
-    private void joinGame() {
+    private void addUser() {
         try {
-            String message = "ADD USER " + userName;
-            client.send("10.140.33.213", message);
+            String addUser = "ADD USER " + userName;
+            client.send(SERVERIP, addUser);
+            String gridSize = "GRID SIZE ";
+            client.send(SERVERIP, gridSize);
             //System.out.println(message);
 
         }catch (Exception e) {
             e.printStackTrace();
         }
 
-        //this.getParent().remove(this);
+
         //revalidate();
         //repaint();
     }

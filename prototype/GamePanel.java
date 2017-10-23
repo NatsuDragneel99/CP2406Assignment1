@@ -2,76 +2,106 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
-public class GamePanel extends JFrame{
-    GridTile[][] grid;
-    int gridHeight;
-    int gridWidth;
+import javax.swing.KeyStroke;
+import java.util.ArrayList;
 
-    GamePanel(int gridHeight, int gridWidth) {
-        this.gridHeight = gridHeight;
-        this.gridWidth = gridWidth;
-        this.grid = new GridTile[gridHeight][gridWidth];
-        JPanel gamePanel = new JPanel();
-        gamePanel.setLayout(new GridLayout(gridHeight, gridWidth));
-        setTitle("TRON");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(900,900);
+public class GamePanel extends JPanel implements ActionListener {
+    private int x = 50;
+    private int y = 50;
+    private int xVelocity = 1;
+    private int yVelocity = 0;
+    private ArrayList usedCoordinates = new ArrayList();
+    private Timer t;
 
-        JButton tile = new JButton();
-        gamePanel.add(tile);
+    public GamePanel() {
+        //JFrame test = new JFrame();
+        //test.setSize(900,900);
+        //test.add(this);
+        //test.setVisible(true);
+        setDoubleBuffered(true);
+        t = new Timer(7, this);
+        t.start();
+        InputMap inputMap = getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW);
+        ActionMap actionMap = getActionMap();
+        inputMap.put(KeyStroke.getKeyStroke("UP"), "upAction");
+        actionMap.put("upAction", upAction);
+        inputMap.put(KeyStroke.getKeyStroke("DOWN"), "downAction");
+        actionMap.put("downAction", downAction);
+        inputMap.put(KeyStroke.getKeyStroke("LEFT"), "leftAction");
+        actionMap.put("leftAction", leftAction);
+        inputMap.put(KeyStroke.getKeyStroke("RIGHT"), "rightAction");
+        actionMap.put("rightAction", rightAction);
 
-        //for (int row = 0; row < gridHeight; row++) {
-        //    for (int col = 0; col < gridWidth; col++) {
-        //        GridTile tile = new GridTile();
-        //        tile.putClientProperty("row", row);
-        //        tile.putClientProperty("col", col);
-        //        gamePanel.add(tile);
-        //        this.grid[row][col] = tile;
-        //    }
-        //}
-
-
-
-        //for(int i = 0; i < gridHeight * gridWidth; i++) {
-        //    JButton button = new JButton(String.valueOf(i));
-        //    gamePanel.add(button);
-        //}
-        add(gamePanel);
-
-
-
-
-
-        //Container test = getContentPane();
-        //test.setLayout(new BorderLayout());
-        //test.add(gamePanel, BorderLayout.CENTER);
     }
 
+    @Override
+    public void paintComponent(Graphics g) {
+        //super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setColor(Color.cyan);
+        g2d.fillRect(x, y, 10, 10);
 
-    //void createGrid() {
-    //   for (int row = 0; row < gridHeight; row++) {
-    //       for (int col = 0; col < gridWidth; col++) {
-    //           DrawPanel panel = new DrawPanel();
-    //           this.grid[row][col] = panel;
-    //       }
-    //   }
-
-    void addCycle() {
-        if("3" == grid[3][2].getClientProperty("row") && "2" == grid[3][2].getClientProperty("col"));
-        grid[3][2].setBackground(Color.yellow);
-        //for (int row = 0; row < gridHeight; row++) {
-        //    for (int col = 0; col < gridWidth; col++) {
-        //        if("3" == grid[row][col].getClientProperty("row") && "2" == grid[row][col].getClientProperty("col"));
-        //        grid[row][col].setBackground(Color.yellow);
-        //    }
-        //}
     }
+
+    Action upAction = new AbstractAction() {
+        //@Override
+        public void actionPerformed(ActionEvent e) {
+            xVelocity = 0;
+            yVelocity = -1;
+        }
+    };
+
+    Action downAction = new AbstractAction() {
+        //@Override
+        public void actionPerformed(ActionEvent e) {
+            xVelocity = 0;
+            yVelocity = 1;
+        }
+    };
+
+    Action leftAction = new AbstractAction() {
+        //@Override
+        public void actionPerformed(ActionEvent e) {
+            xVelocity = -1;
+            yVelocity = 0;
+        }
+    };
+
+    Action rightAction = new AbstractAction() {
+        //@Override
+        public void actionPerformed(ActionEvent e) {
+            xVelocity = 1;
+            yVelocity = 0;
+        }
+    };
+
+    void moveUp() {
+        xVelocity = 0;
+        yVelocity = -1;
+    }
+    void moveDown() {
+        xVelocity = 0;
+        yVelocity = 1;
+    }
+    void moveLeft() {
+        xVelocity = -1;
+        yVelocity = 0;
+    }
+    void moveRight() {
+        xVelocity = 1;
+        yVelocity = 0;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        x = x + xVelocity;
+        y = y + yVelocity;
+        usedCoordinates.add(x + "," + y);
+        repaint();
+    }
+
     public static void main(String[] args) {
-        GamePanel panel = new GamePanel(500, 500);
-        panel.setVisible(true);
-        //System.out.println(panel.grid[0][6].getClientProperty("row"));
-        //System.out.println(panel.grid[0][6].getClientProperty("col"));
-        //panel.addCycle();
+        GamePanel testing = new GamePanel();
+        //testing.setVisible(true);
     }
 }

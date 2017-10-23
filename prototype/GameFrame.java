@@ -1,14 +1,11 @@
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 public class GameFrame extends JFrame {
     //GridTile[][] grid;
     int gridHeight;
     int gridWidth;
     MenuPanel menuPanel;
-    TestGamePanel gamePanel;
+    GamePanel gamePanel;
 
 
     GameFrame(int gridHeight, int gridWidth) {
@@ -47,7 +44,7 @@ public class GameFrame extends JFrame {
     }
 
     void loadGame() {
-        gamePanel = new TestGamePanel();
+        gamePanel = new GamePanel();
         add(gamePanel);
     }
 
