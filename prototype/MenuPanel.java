@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.net.MulticastSocket;
 
 public class MenuPanel extends JPanel {
-    String SERVERIP = "10.140.33.213";
+    String SERVERIP = "10.178.246.25";
     String userName;
     Client client;
     GameFrame gameFrame;
@@ -53,8 +53,8 @@ public class MenuPanel extends JPanel {
         try {
             String addUser = "ADD USER " + userName;
             client.send(SERVERIP, addUser);
-            String gridSize = "GRID SIZE ";
-            client.send(SERVERIP, gridSize);
+            //String gridSize = "GRID SIZE ";
+            //client.send(SERVERIP, gridSize);
             //System.out.println(message);
 
         }catch (Exception e) {

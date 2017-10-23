@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class RunServerSide {
     public static void main(String[] args) throws Exception{
+        String players[] = new String[3];
 
         MulticastServer server = new MulticastServer("228.5.6.7",49321);
         System.out.println(server.getIP());
@@ -23,12 +24,37 @@ public class RunServerSide {
             gridWidth = Integer.parseInt(gridWidthString);
         }
 
+        int playerNumber = 0;
         while(true) {
             String message = server.read();
             System.out.println(message);
 
             if(message.startsWith("ADD USER")) {
-                server.broadcast("OKAY");
+                if(players[2] != null) {
+                    server.broadcast("FAILED too many players");
+                } else {
+                    String[] gridSizeArray = message.split(" ");
+                    String playerName = gridSizeArray[2];
+                    TestLightCycle lightCycle = new TestLightCycle(gridHeight, gridWidth);
+                    int playerX = lightCycle.getCyclePosition()[0];
+                    int playerY = lightCycle.getCyclePosition()[1];
+                    players[playerNumber] = playerName + "," + playerX + "," + playerY;
+                    System.out.println(players[playerNumber]);
+                    server.broadcast("OKAY");
+                    playerNumber++;
+                }
+
+            //if(message.startsWith("ADD USER")) {
+            //    if(players[2] != null) {
+            //        server.broadcast("FAILED too many players");
+            //    } else {
+            //        String[] gridSizeArray = message.split(" ");
+            //        int playerNumber = Integer.parseInt(gridSizeArray[2]);
+            //        String player = gridSizeArray[3];
+            //        players[playerNumber] = player;
+            //        server.broadcast("OKAY");
+            //    }
+
             } else if(message.startsWith("REMOVE USER")) {
 
             } else if(message.startsWith("GRID SIZE")) {

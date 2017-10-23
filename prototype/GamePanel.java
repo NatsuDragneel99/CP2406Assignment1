@@ -13,12 +13,13 @@ public class GamePanel extends JPanel implements ActionListener {
     private ArrayList usedCoordinates = new ArrayList();
     private Timer t;
 
-    public GamePanel() {
+    public GamePanel(int gridHeight, int gridWidth) {
         //JFrame test = new JFrame();
         //test.setSize(900,900);
         //test.add(this);
         //test.setVisible(true);
         setDoubleBuffered(true);
+        setPreferredSize(new Dimension(gridHeight, gridWidth));
         t = new Timer(7, this);
         t.start();
         InputMap inputMap = getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW);
@@ -100,8 +101,8 @@ public class GamePanel extends JPanel implements ActionListener {
         repaint();
     }
 
-    public static void main(String[] args) {
-        GamePanel testing = new GamePanel();
-        //testing.setVisible(true);
-    }
+    //public static void main(String[] args) {
+    //    GamePanel testing = new GamePanel();
+    //    //testing.setVisible(true);
+    //}
 }

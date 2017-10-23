@@ -50,7 +50,7 @@ public class GameFrame extends JFrame {
     }
 
     void loadGame() {
-        gamePanel = new GamePanel();
+        gamePanel = new GamePanel(gridHeight, gridWidth);
         setContentPane(gamePanel);
         invalidate();
         validate();

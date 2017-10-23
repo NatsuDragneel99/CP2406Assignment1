@@ -7,6 +7,10 @@ import java.net.MulticastSocket;
  */
 
 public class ClientListen extends Thread {
+    int gridHeight;
+    int gridWidth;
+    TestLightCycle[] lightCycles = new TestLightCycle[3];
+
     public void run() {
         try {
             MulticastSocket multicast = new MulticastSocket(49321);
@@ -18,11 +22,11 @@ public class ClientListen extends Thread {
                 multicast.receive(receivedPacket);
                 String messageString;
                 messageString = new String(messageBuffer);
-                //System.out.println(messageString);
+                System.out.println(messageString);
                 if(messageString.startsWith("GRID SIZE")) {
                     String[] gridSizeArray = messageString.split(" ");
-                    int gridHeight = Integer.parseInt(gridSizeArray[1]);
-                    int gridWidth = Integer.parseInt(gridSizeArray[2]);
+                    this.gridHeight = Integer.parseInt(gridSizeArray[1]);
+                    this.gridWidth = Integer.parseInt(gridSizeArray[2]);
                 } else if(messageString.startsWith("")) {
 
                 }
