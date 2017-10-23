@@ -4,6 +4,7 @@ public class RunServerSide {
     public static void main(String[] args) throws Exception{
 
         MulticastServer server = new MulticastServer("228.5.6.7",49321);
+        System.out.println(server.getIP());
         Scanner input = new Scanner(System.in);
         System.out.print("Enter height of grid (500-1000) >> ");
         String gridHeightString = input.nextLine();
@@ -27,8 +28,7 @@ public class RunServerSide {
             System.out.println(message);
 
             if(message.startsWith("ADD USER")) {
-                server.broadcast("OKAY");
-
+                server.broadcast("OKAY" + gridHeightString + gridWidthString);
             }
 
 

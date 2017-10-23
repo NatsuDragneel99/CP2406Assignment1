@@ -4,26 +4,26 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class GameFrame extends JFrame {
-    GridTile[][] grid;
+    //GridTile[][] grid;
     int gridHeight;
     int gridWidth;
     MenuPanel menuPanel;
     TestGamePanel gamePanel;
-    String userName;
 
 
     GameFrame(int gridHeight, int gridWidth) {
+        //setLayout(new FlowLayout());
         this.gridHeight = gridHeight;
         this.gridWidth = gridWidth;
-        this.grid = new GridTile[gridHeight][gridWidth];
+        //this.grid = new GridTile[gridHeight][gridWidth];
         setTitle("TRON");
         setSize(900,900);
         setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
-        menuPanel = new MenuPanel();
-        gamePanel = new TestGamePanel();
+
+
 
 
 
@@ -42,11 +42,12 @@ public class GameFrame extends JFrame {
 
     }
     void loadMenu() {
-        menuPanel.userName = userName;
+        menuPanel = new MenuPanel();
         add(menuPanel);
     }
 
     void loadGame() {
+        gamePanel = new TestGamePanel();
         add(gamePanel);
     }
 

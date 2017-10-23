@@ -7,7 +7,7 @@ public class RunClientSide {
         GameFrame gameFrame = new GameFrame(10, 10);
         
         gameFrame.loadMenu();
-        //gameFrame.closeMenu();
+        //gameFrame.loadGame();
 
 
 

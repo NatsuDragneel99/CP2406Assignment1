@@ -14,6 +14,10 @@ public class TestGamePanel extends JPanel implements ActionListener {
     private Timer t;
 
     public TestGamePanel() {
+        //JFrame test = new JFrame();
+        //test.setSize(900,900);
+        //test.add(this);
+        //test.setVisible(true);
         setDoubleBuffered(true);
         t = new Timer(7, this);
         t.start();
@@ -96,4 +100,8 @@ public class TestGamePanel extends JPanel implements ActionListener {
         repaint();
     }
 
+    public static void main(String[] args) {
+        TestGamePanel testing = new TestGamePanel();
+        //testing.setVisible(true);
+    }
 }

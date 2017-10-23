@@ -7,38 +7,40 @@ import java.net.MulticastSocket;
 public class MenuPanel extends JPanel {
     String userName;
     Client client;
-    MulticastSocket multicast;
+    MulticastServer server;
     boolean userAdded;
 
     public MenuPanel(){
+        //JFrame test = new JFrame();
+        //test.setSize(900,900);
+        //test.add(this);
+        //test.setVisible(true);
         setLayout(new FlowLayout());
         setVisible(true);
+        setBackground(Color.BLACK);
         JButton joinGame = new JButton("Join Game");
+        ClientListen thread = new ClientListen();
+        thread.start();
 
         try {
             this.client = new Client(49322);
-            this.multicast = new MulticastSocket(49321);
         }catch (Exception e) {
             e.printStackTrace();
         }
 
+        add(joinGame);
         joinGame.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 displayAddUserFrame();
                 if(userName != null) {
                     joinGame();
-                    try {
-                        String responseMessage = client.listen(multicast);
-                        System.out.println(responseMessage);
-                    }catch (Exception error) {
-                        error.printStackTrace();
-                    }
 
                 }
             }
         });
-        add(joinGame);
+
     }
 
     private void displayAddUserFrame() {
@@ -48,19 +50,20 @@ public class MenuPanel extends JPanel {
     private void joinGame() {
         try {
             String message = "ADD USER " + userName;
-            client.send("10.178.246.25", message);
-            System.out.println(message);
+            client.send("10.140.33.213", message);
+            //System.out.println(message);
+
         }catch (Exception e) {
             e.printStackTrace();
         }
 
-        this.getParent().remove(this);
-        revalidate();
-        repaint();
+        //this.getParent().remove(this);
+        //revalidate();
+        //repaint();
     }
 
 
     public static void main(String[] args) {
-        //MenuPanel test = new MenuPanel();
+        MenuPanel test = new MenuPanel();
     }
 }
