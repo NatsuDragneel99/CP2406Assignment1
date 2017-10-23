@@ -18,11 +18,29 @@ public class ClientListen extends Thread {
                 multicast.receive(receivedPacket);
                 String messageString;
                 messageString = new String(messageBuffer);
-                System.out.println(messageString);
+                //System.out.println(messageString);
+                if(messageString.startsWith("GRID SIZE")) {
+                    String[] gridSizeArray = messageString.split(" ");
+                    int gridHeight = Integer.parseInt(gridSizeArray[1]);
+                    int gridWidth = Integer.parseInt(gridSizeArray[2]);
+                } else if(messageString.startsWith("")) {
+
+                }
             }
             } catch (Exception e) {
                 e.printStackTrace();
 
+        }
+    }
+
+    public static void main(String[] args) {
+        try {
+            GameFrame gameFrame = new GameFrame(10, 10);
+            gameFrame.loadMenu();
+            //gameFrame.loadGame();
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

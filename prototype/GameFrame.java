@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class GameFrame extends JFrame {
     //GridTile[][] grid;
@@ -15,6 +16,7 @@ public class GameFrame extends JFrame {
         //this.grid = new GridTile[gridHeight][gridWidth];
         setTitle("TRON");
         setSize(900,900);
+        setBackground(Color.BLACK);
         setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -41,14 +43,13 @@ public class GameFrame extends JFrame {
     void loadMenu() {
         menuPanel = new MenuPanel(this);
         add(menuPanel);
+        invalidate();
+        validate();
+        repaint();
+        setVisible(true);
     }
 
     void loadGame() {
-        gamePanel = new GamePanel();
-        add(gamePanel);
-    }
-
-    void startGame() {
         gamePanel = new GamePanel();
         setContentPane(gamePanel);
         invalidate();

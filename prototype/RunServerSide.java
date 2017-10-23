@@ -32,7 +32,7 @@ public class RunServerSide {
             } else if(message.startsWith("REMOVE USER")) {
 
             } else if(message.startsWith("GRID SIZE")) {
-                server.broadcast(gridHeightString + "," + gridWidthString);
+                server.broadcast("GRID SIZE " + gridHeightString + " " + gridWidthString);
             } else if(message.startsWith("GAME STATE")) {
 
             } else if(message.startsWith("SAVE SCORE")) {
@@ -40,10 +40,7 @@ public class RunServerSide {
             } else if(message.startsWith("GAME LEADERBOARD")) {
 
             }
-
-
-
         }
-
     }
+
 }
