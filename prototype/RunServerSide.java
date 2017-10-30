@@ -2,8 +2,10 @@ import java.util.Scanner;
 
 public class RunServerSide {
     public static void main(String[] args) throws Exception {
-        String players[] = new String[3];
+        final int MAXPLAYERS = 3;
+        String players[] = new String[MAXPLAYERS];
         boolean gameState = false;
+
         MulticastServer server = new MulticastServer("228.5.6.7", 49321);
         System.out.println(server.getIP());
         Scanner input = new Scanner(System.in);
@@ -46,7 +48,7 @@ public class RunServerSide {
                     players[playerNumber] = playerName + "," + playerX + "," + playerY;
                     server.broadcast("OKAY");
                     playerNumber++;
-                    if(playerNumber >= 3) {
+                    if(playerNumber >= MAXPLAYERS) {
                         gameState = true;
                     }
                 }
