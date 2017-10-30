@@ -83,11 +83,11 @@ public class RunServerSide {
 
             }
 
-            for (String player : players) {
-                if(player != null) {
-                    server.broadcast(player);
-                }
-            }
+            //for (String player : players) {
+            //    if(player != null) {
+            //        server.broadcast(player);
+            //    }
+            //}
         }
 
     }

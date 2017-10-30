@@ -38,7 +38,7 @@ public class MenuPanel extends JPanel {
                 displayAddUserFrame();
                 if(userName != null) {
                     addUser();
-                    gameFrame.loadGame();
+                    //gameFrame.loadGame();
                 }
             }
         });
