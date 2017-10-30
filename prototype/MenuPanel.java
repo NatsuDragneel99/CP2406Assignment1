@@ -22,8 +22,8 @@ public class MenuPanel extends JPanel {
         setVisible(true);
         setBackground(Color.BLACK);
         JButton joinGame = new JButton("Join Game");
-        ClientListen thread = new ClientListen();
-        thread.start();
+        //ClientListen thread = new ClientListen();
+        //thread.start();
 
         try {
             this.client = new Client(49322);

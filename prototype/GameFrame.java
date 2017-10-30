@@ -42,7 +42,7 @@ public class GameFrame extends JFrame {
     }
     void loadMenu() {
         menuPanel = new MenuPanel(this);
-        add(menuPanel);
+        setContentPane(menuPanel);
         invalidate();
         validate();
         repaint();

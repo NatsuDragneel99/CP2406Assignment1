@@ -9,13 +9,20 @@ import java.net.MulticastSocket;
 public class ClientListen extends Thread {
     int gridHeight;
     int gridWidth;
+    GameFrame gameFrame;
     TestLightCycle[] lightCycles = new TestLightCycle[3];
+
+    ClientListen() {
+        this.gameFrame = new GameFrame(10, 10);
+        gameFrame.loadMenu();
+    }
 
     public void run() {
         try {
             MulticastSocket multicast = new MulticastSocket(49321);
             InetAddress multicastIP = InetAddress.getByName("228.5.6.7");
             multicast.joinGroup(multicastIP);
+
             while(true) {
                 byte[] messageBuffer = new byte[1024];
                 DatagramPacket receivedPacket = new DatagramPacket(messageBuffer, 1024);
@@ -27,10 +34,19 @@ public class ClientListen extends Thread {
                     String[] gridSizeArray = messageString.split(" ");
                     this.gridHeight = Integer.parseInt(gridSizeArray[1]);
                     this.gridWidth = Integer.parseInt(gridSizeArray[2]);
-                } else if(messageString.startsWith("")) {
+
+                } else if(messageString.startsWith("PLAY")) {
+                    gameFrame.loadGame();
+
+                    //GamePanel gamePanel = new GamePanel(gridHeight, gridWidth);
+                    //gameFrame.setContentPane(gamePanel); //given NullPointerException?????
+                    //gameFrame.invalidate();
+                    //gameFrame.validate();
+                    //gameFrame.repaint();
+                    //gameFrame.setVisible(true);
 
                 } else {
-                    System.out.println(messageString);
+                    //System.out.println(messageString);
                 }
             }
             } catch (Exception e) {
@@ -40,15 +56,18 @@ public class ClientListen extends Thread {
     }
 
     public static void main(String[] args) {
-        try {
-            GameFrame gameFrame = new GameFrame(10, 10);
-            gameFrame.loadMenu();
-            //gameFrame.loadGame();
+        ClientListen client = new ClientListen();
+        client.start();
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("TESTING");
-        }
+        //try {
+        //    GameFrame gameFrame = new GameFrame(10, 10);
+        //    gameFrame.loadMenu();
+        //    //gameFrame.loadGame();
+//
+        //} catch (Exception e) {
+        //    e.printStackTrace();
+        //    System.out.println("TESTING");
+        //}
     }
 }
 

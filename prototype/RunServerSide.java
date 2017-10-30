@@ -34,7 +34,9 @@ public class RunServerSide {
 
             if (gameState.equals(gameStates[2]))  { //if gameState = PLAYING
                 for(String player : players) {
-                    server.broadcast(player);
+                    if (player != null) {
+                        server.broadcast(player);
+                    }
                 }
 
             } if (message.startsWith("ADD USER")) {
@@ -50,6 +52,7 @@ public class RunServerSide {
                     server.broadcast("OKAY");
                     playerNumber++;
                     if(playerNumber >= MAXPLAYERS) {
+                        server.broadcast("PLAY");
                         gameState = gameStates[2]; //set gameState to PLAYING
                     }
                 }
