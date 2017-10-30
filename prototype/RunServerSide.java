@@ -3,8 +3,9 @@ import java.util.Scanner;
 public class RunServerSide {
     public static void main(String[] args) throws Exception {
         final int MAXPLAYERS = 3;
+        String gameStates[] = {"IDLE", "WAITING", "PLAYING", "OVER"};
         String players[] = new String[MAXPLAYERS];
-        boolean gameState = false;
+        String gameState = gameStates[1];
 
         MulticastServer server = new MulticastServer("228.5.6.7", 49321);
         System.out.println(server.getIP());
@@ -31,7 +32,7 @@ public class RunServerSide {
             String message = server.read();
             System.out.println(message);
 
-            if (gameState) {
+            if (gameState.equals(gameStates[2]))  { //if gameState = PLAYING
                 for(String player : players) {
                     server.broadcast(player);
                 }
@@ -49,7 +50,7 @@ public class RunServerSide {
                     server.broadcast("OKAY");
                     playerNumber++;
                     if(playerNumber >= MAXPLAYERS) {
-                        gameState = true;
+                        gameState = gameStates[2]; //set gameState to PLAYING
                     }
                 }
 
@@ -78,6 +79,17 @@ public class RunServerSide {
             } else if (message.startsWith("GRID SIZE")) {
                 server.broadcast("GRID SIZE " + gridHeightString + " " + gridWidthString);
             } else if (message.startsWith("GAME STATE")) {
+                if(gameState.equals(gameStates[2])) {
+                    server.broadcast("PLAYING");
+                } else if(gameState.equals(gameStates[1])) {
+                    server.broadcast("WAITING FOR USERS");
+                } else if(gameState.equals(gameStates[0])) {
+                    server.broadcast("IDLE");
+                } else if(gameState.equals(gameStates[3])) {
+                    String winner;
+                    
+                    server.broadcast("GAME OVER"); //Need to add winner
+                }
 
             } else if (message.startsWith("SAVE SCORE")) {
 
