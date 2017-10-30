@@ -78,17 +78,23 @@ public class RunServerSide {
 
             } else if (message.startsWith("GRID SIZE")) {
                 server.broadcast("GRID SIZE " + gridHeightString + " " + gridWidthString);
+
             } else if (message.startsWith("GAME STATE")) {
-                if(gameState.equals(gameStates[2])) {
+                if(gameState.equals(gameStates[2])) { //if playing
                     server.broadcast("PLAYING");
                 } else if(gameState.equals(gameStates[1])) {
                     server.broadcast("WAITING FOR USERS");
-                } else if(gameState.equals(gameStates[0])) {
+                } else if(gameState.equals(gameStates[0])) { //if idle
                     server.broadcast("IDLE");
-                } else if(gameState.equals(gameStates[3])) {
-                    String winner;
-                    
-                    server.broadcast("GAME OVER"); //Need to add winner
+                } else if(gameState.equals(gameStates[3])) { //if gameover
+                    for(String player : players) {
+                        if(player != null) {
+                            String[] winnerArray = player.split(",");
+                            String winnerName = winnerArray[0];
+                            server.broadcast("GAME OVER " + winnerName);
+                        }
+                    }
+
                 }
 
             } else if (message.startsWith("SAVE SCORE")) {
