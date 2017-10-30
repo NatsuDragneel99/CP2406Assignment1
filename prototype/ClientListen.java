@@ -29,6 +29,8 @@ public class ClientListen extends Thread {
                     this.gridWidth = Integer.parseInt(gridSizeArray[2]);
                 } else if(messageString.startsWith("")) {
 
+                } else {
+                    System.out.println(messageString);
                 }
             }
             } catch (Exception e) {
@@ -45,6 +47,7 @@ public class ClientListen extends Thread {
 
         } catch (Exception e) {
             e.printStackTrace();
+            System.out.println("TESTING");
         }
     }
 }

@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class RunServerSide {
     public static void main(String[] args) throws Exception {
         String players[] = new String[3];
-
+        boolean gameState = false;
         MulticastServer server = new MulticastServer("228.5.6.7", 49321);
         System.out.println(server.getIP());
         Scanner input = new Scanner(System.in);
@@ -29,7 +29,12 @@ public class RunServerSide {
             String message = server.read();
             System.out.println(message);
 
-            if (message.startsWith("ADD USER")) {
+            if (gameState) {
+                for(String player : players) {
+                    server.broadcast(player);
+                }
+
+            } if (message.startsWith("ADD USER")) {
                 if (players[2] != null) {
                     server.broadcast("FAILED too many players");
                 } else {
@@ -41,18 +46,30 @@ public class RunServerSide {
                     players[playerNumber] = playerName + "," + playerX + "," + playerY;
                     server.broadcast("OKAY");
                     playerNumber++;
+                    if(playerNumber >= 3) {
+                        gameState = true;
+                    }
                 }
 
-                //if(message.startsWith("ADD USER")) {
-                //    if(players[2] != null) {
-                //        server.broadcast("FAILED too many players");
-                //    } else {
-                //        String[] gridSizeArray = message.split(" ");
-                //        int playerNumber = Integer.parseInt(gridSizeArray[2]);
-                //        String player = gridSizeArray[3];
-                //        players[playerNumber] = player;
-                //        server.broadcast("OKAY");
-                //    }
+            } else if (message.startsWith("USER")) {
+                String[] userActionArray = message.split(" ");
+                if(userActionArray[2].equals("TURN")) {
+                    if(userActionArray[3].equals("left")) {
+                        for(String player: players) {
+                            String[] playerArray = player.split(",");
+                            if(playerArray[0].equals(userActionArray[1])) {
+                                //increment x coordinate of light cycle selected by -1
+                            }
+                        }
+                    } else if(userActionArray[3].equals("right")) {
+                        for(String player: players) {
+                            String[] playerArray = player.split(",");
+                            if(playerArray[0].equals(userActionArray[1])) {
+                                //increment x coordinate of light cycle selected by +1
+                            }
+                        }
+                    }
+                }
 
             } else if (message.startsWith("REMOVE USER")) {
 
@@ -67,7 +84,9 @@ public class RunServerSide {
             }
 
             for (String player : players) {
-                server.broadcast(player);
+                if(player != null) {
+                    server.broadcast(player);
+                }
             }
         }
 

@@ -58,10 +58,6 @@ public class GameFrame extends JFrame {
         setVisible(true);
     }
 
-    void closeGame() {
-        remove(gamePanel);
-    }
-
     //public static void main(String[] args) {
     //    GameFrame panel = new GameFrame(10, 10);
 //
