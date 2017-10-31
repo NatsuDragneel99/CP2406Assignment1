@@ -20,6 +20,7 @@ public class RunServerSide {
         TestLightCycle lightCycles[] = new TestLightCycle[MAXPLAYERS];
         String players[] = new String[MAXPLAYERS];
         String gameState = gameStates[1];
+        String playerString = "";
 
         MulticastServer server = new MulticastServer("228.5.6.7", 49321);
         System.out.println(server.getIP());
@@ -47,20 +48,21 @@ public class RunServerSide {
             System.out.println(message);
 
             if (gameState.equals(gameStates[2]))  { //if gameState = PLAYING
-                String playerString = "";
-                for(String player : players) {
-                    if (player != null) {                                   //Create global variable player and update it every time a new player is added instead.....??????????
-                        if(playerString.equals("")) {
-                            //playerString = playerString.concat(player);
-                            playerString = playerString + player;
-                        } else {
-                            playerString = playerString + " " + player;
-                            //playerString = playerString.concat(" " + player);
-                        }
-
-                    }
-                }
                 server.broadcast(playerString);
+                //String playerString = "";
+                //for(String player : players) {
+                //    if (player != null) {                                   //Create global variable player and update it every time a new player is added instead.....??????????
+                //        if(playerString.equals("")) {
+                //            //playerString = playerString.concat(player);
+                //            playerString = playerString + player;
+                //        } else {
+                //            playerString = playerString + " " + player;
+                //            //playerString = playerString.concat(" " + player);
+                //        }
+//
+                //    }
+                //}
+                //server.broadcast(playerString);
 
             } if (message.startsWith("ADD USER")) {
                 if (players[2] != null) {
@@ -74,6 +76,15 @@ public class RunServerSide {
                     int playerX = lightCycle.getCyclePosition()[0];
                     int playerY = lightCycle.getCyclePosition()[1];
                     players[playerNumber] = playerName + "," + playerX + "," + playerY;
+
+                    if(playerString.equals("")) {
+                        playerString = players[playerNumber];
+                    } else {
+                        playerString = playerString + " " + players[playerNumber];
+                    }
+                    System.out.println(playerString);
+                    server.broadcast(playerString);
+
                     server.broadcast("OKAY " + playerName);
                     playerNumber++;
                     if(playerNumber >= MAXPLAYERS) {

@@ -21,8 +21,8 @@ class Client {
     }
 
     String listen(MulticastSocket multicast) throws Exception{
-        byte[] messageBuffer = new byte[1024];
-        DatagramPacket receivedPacket = new DatagramPacket(messageBuffer, 1024);
+        byte[] messageBuffer = new byte[2048];
+        DatagramPacket receivedPacket = new DatagramPacket(messageBuffer, 2048);
         multicast.receive(receivedPacket);
         return new String(messageBuffer).trim();
     }

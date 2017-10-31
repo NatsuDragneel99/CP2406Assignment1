@@ -8,7 +8,7 @@ public class GameFrame extends JFrame {
     MenuPanel menuPanel;
     GamePanel gamePanel;
 
-    final String SERVERIP = "10.178.246.25"; //IP of the multicast server being connected to.
+    final String SERVERIP = "10.140.33.246"; //IP of the multicast server being connected to.
     final int CLIENTPORT = 49322; //Change for each individual client.
 
 

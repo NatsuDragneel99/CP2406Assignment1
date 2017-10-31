@@ -26,8 +26,8 @@ public class ClientListen extends Thread {
             multicast.joinGroup(multicastIP);
 
             while(true) {
-                byte[] messageBuffer = new byte[1024];
-                DatagramPacket receivedPacket = new DatagramPacket(messageBuffer, 1024);
+                byte[] messageBuffer = new byte[2048];
+                DatagramPacket receivedPacket = new DatagramPacket(messageBuffer, 2048);
                 multicast.receive(receivedPacket);
                 String messageString;
                 messageString = new String(messageBuffer);
