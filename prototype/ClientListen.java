@@ -11,6 +11,7 @@ public class ClientListen extends Thread {
     int gridWidth;
     GameFrame gameFrame;
     GamePanel gamePanel;
+    String userName = null;
     TestLightCycle[] lightCycles = new TestLightCycle[3];
 
     ClientListen() {
@@ -45,6 +46,12 @@ public class ClientListen extends Thread {
                     //gameFrame.validate();
                     //gameFrame.repaint();
                     //gameFrame.setVisible(true);
+                } else if(messageString.startsWith("OKAY")) {
+                    String[] userNameArray = messageString.split(" ");
+                    if(userName == null) {
+                        this.userName = userNameArray[1];
+                        System.out.println(userName);
+                    }
 
                 } else {
                     //System.out.println(messageString);

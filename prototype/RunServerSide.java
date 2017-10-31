@@ -4,6 +4,7 @@ public class RunServerSide {
     public static void main(String[] args) throws Exception {
         final int MAXPLAYERS = 3;
         String gameStates[] = {"IDLE", "WAITING", "PLAYING", "OVER"};
+        TestLightCycle lightCycles[] = new TestLightCycle[MAXPLAYERS];
         String players[] = new String[MAXPLAYERS];
         String gameState = gameStates[1];
 
@@ -46,10 +47,12 @@ public class RunServerSide {
                     String[] gridSizeArray = message.split(" ");
                     String playerName = gridSizeArray[2];
                     TestLightCycle lightCycle = new TestLightCycle(gridHeight, gridWidth);
+                    lightCycles[playerNumber] = lightCycle;
+
                     int playerX = lightCycle.getCyclePosition()[0];
                     int playerY = lightCycle.getCyclePosition()[1];
                     players[playerNumber] = playerName + "," + playerX + "," + playerY;
-                    server.broadcast("OKAY");
+                    server.broadcast("OKAY " + playerName);
                     playerNumber++;
                     if(playerNumber >= MAXPLAYERS) {
                         server.broadcast("PLAY");
@@ -61,7 +64,7 @@ public class RunServerSide {
                 String[] userActionArray = message.split(" ");
                 if(userActionArray[2].equals("TURN")) {
                     if(userActionArray[3].equals("left")) {
-                        for(String player: players) {
+                            for(String player: players) {
                             String[] playerArray = player.split(",");
                             if(playerArray[0].equals(userActionArray[1])) {
                                 //increment x coordinate of light cycle selected by -1
