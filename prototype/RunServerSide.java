@@ -2,6 +2,19 @@ import java.util.Scanner;
 
 public class RunServerSide {
     public static void main(String[] args) throws Exception {
+        //if (gameState.equals(gameStates[2]))  { //if gameState = PLAYING
+        //    String playerString = "";
+        //    for(String player : players) {
+        //        if (player != null) {
+        //            if(playerString.equals("")) {
+        //                playerString = playerString + player;
+        //            } else {
+        //                playerString = playerString + " " + player;
+        //            }
+        //        }
+        //        server.broadcast(playerString);
+
+
         final int MAXPLAYERS = 3;
         String gameStates[] = {"IDLE", "WAITING", "PLAYING", "OVER"};
         TestLightCycle lightCycles[] = new TestLightCycle[MAXPLAYERS];
@@ -34,11 +47,20 @@ public class RunServerSide {
             System.out.println(message);
 
             if (gameState.equals(gameStates[2]))  { //if gameState = PLAYING
+                String playerString = "";
                 for(String player : players) {
-                    if (player != null) {
-                        server.broadcast(player);
+                    if (player != null) {                                   //Create global variable player and update it every time a new player is added instead.....??????????
+                        if(playerString.equals("")) {
+                            //playerString = playerString.concat(player);
+                            playerString = playerString + player;
+                        } else {
+                            playerString = playerString + " " + player;
+                            //playerString = playerString.concat(" " + player);
+                        }
+
                     }
                 }
+                server.broadcast(playerString);
 
             } if (message.startsWith("ADD USER")) {
                 if (players[2] != null) {

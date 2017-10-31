@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class GamePanel extends JPanel implements ActionListener {
     private final String SERVERIP;
     private final int CLIENTPORT;
+    Client client;
 
     private int x = 50;
     private int y = 50;
@@ -19,6 +20,12 @@ public class GamePanel extends JPanel implements ActionListener {
     public GamePanel(int gridHeight, int gridWidth, String userName, String serverIP, int clientPort) {
         this.SERVERIP = serverIP;
         this.CLIENTPORT = clientPort;
+        try {
+            this.client = new Client(CLIENTPORT);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
         //JFrame test = new JFrame();
         //test.setSize(900,900);
         //test.add(this);
