@@ -6,6 +6,9 @@ import javax.swing.KeyStroke;
 import java.util.ArrayList;
 
 public class GamePanel extends JPanel implements ActionListener {
+    private final String SERVERIP;
+    private final int CLIENTPORT;
+
     private int x = 50;
     private int y = 50;
     private int xVelocity = 1;
@@ -13,7 +16,9 @@ public class GamePanel extends JPanel implements ActionListener {
     private ArrayList usedCoordinates = new ArrayList();
     private Timer t;
 
-    public GamePanel(int gridHeight, int gridWidth, String userName) {
+    public GamePanel(int gridHeight, int gridWidth, String userName, String serverIP, int clientPort) {
+        this.SERVERIP = serverIP;
+        this.CLIENTPORT = clientPort;
         //JFrame test = new JFrame();
         //test.setSize(900,900);
         //test.add(this);

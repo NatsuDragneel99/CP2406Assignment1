@@ -5,14 +5,18 @@ import java.awt.event.ActionListener;
 import java.net.MulticastSocket;
 
 public class MenuPanel extends JPanel {
-    String SERVERIP = "10.178.246.25";
+    private final String SERVERIP;
+    private final int CLIENTPORT;
+
     String userName;
     Client client;
     GameFrame gameFrame;
     MulticastServer server;
     boolean userAdded;
 
-    public MenuPanel(GameFrame gameFrame){
+    public MenuPanel(GameFrame gameFrame, String serverIP, int clientPort){
+        this.SERVERIP = serverIP;
+        this.CLIENTPORT = clientPort;
         this.gameFrame = gameFrame;
         //JFrame test = new JFrame();
         //test.setSize(900,900);
@@ -26,7 +30,7 @@ public class MenuPanel extends JPanel {
         //thread.start();
 
         try {
-            this.client = new Client(49322);
+            this.client = new Client(CLIENTPORT);
         }catch (Exception e) {
             e.printStackTrace();
         }
