@@ -49,8 +49,8 @@ public class GameFrame extends JFrame {
         setVisible(true);
     }
 
-    GamePanel loadGame() {
-        gamePanel = new GamePanel(gridHeight, gridWidth);
+    GamePanel loadGame(String userName) {
+        gamePanel = new GamePanel(gridHeight, gridWidth, userName);
         setContentPane(gamePanel);
         invalidate();
         validate();

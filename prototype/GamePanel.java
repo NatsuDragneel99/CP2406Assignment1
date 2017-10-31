@@ -13,7 +13,7 @@ public class GamePanel extends JPanel implements ActionListener {
     private ArrayList usedCoordinates = new ArrayList();
     private Timer t;
 
-    public GamePanel(int gridHeight, int gridWidth) {
+    public GamePanel(int gridHeight, int gridWidth, String userName) {
         //JFrame test = new JFrame();
         //test.setSize(900,900);
         //test.add(this);
