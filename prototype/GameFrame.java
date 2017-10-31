@@ -9,7 +9,7 @@ public class GameFrame extends JFrame {
     GamePanel gamePanel;
 
     final String SERVERIP = "10.140.33.246"; //IP of the multicast server being connected to.
-    final int CLIENTPORT = 49322; //Change for each individual client.
+    final int CLIENTPORT = 49324; //Change for each individual client.
 
 
     GameFrame(int gridHeight, int gridWidth) {
@@ -52,8 +52,8 @@ public class GameFrame extends JFrame {
         setVisible(true);
     }
 
-    GamePanel loadGame(String userName) {
-        gamePanel = new GamePanel(gridHeight, gridWidth, userName, SERVERIP, CLIENTPORT);
+    GamePanel loadGame(String userName, String playerString) {
+        gamePanel = new GamePanel(gridHeight, gridWidth, userName, SERVERIP, CLIENTPORT, playerString);
         setContentPane(gamePanel);
         invalidate();
         validate();

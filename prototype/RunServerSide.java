@@ -49,20 +49,7 @@ public class RunServerSide {
 
             if (gameState.equals(gameStates[2]))  { //if gameState = PLAYING
                 server.broadcast(playerString);
-                //String playerString = "";
-                //for(String player : players) {
-                //    if (player != null) {                                   //Create global variable player and update it every time a new player is added instead.....??????????
-                //        if(playerString.equals("")) {
-                //            //playerString = playerString.concat(player);
-                //            playerString = playerString + player;
-                //        } else {
-                //            playerString = playerString + " " + player;
-                //            //playerString = playerString.concat(" " + player);
-                //        }
-//
-                //    }
-                //}
-                //server.broadcast(playerString);
+
 
             } if (message.startsWith("ADD USER")) {
                 if (players[2] != null) {
@@ -80,16 +67,15 @@ public class RunServerSide {
                     if(playerString.equals("")) {
                         playerString = players[playerNumber];
                     } else {
-                        playerString = playerString + " " + players[playerNumber];
+                        playerString = playerString + "-" + players[playerNumber];
                     }
-                    System.out.println(playerString);
-                    server.broadcast(playerString);
+
 
                     server.broadcast("OKAY " + playerName);
                     playerNumber++;
                     if(playerNumber >= MAXPLAYERS) {
-                        server.broadcast("PLAY");
-                        gameState = gameStates[2]; //set gameState to PLAYING
+                        server.broadcast("PLAY " + playerString);
+                        //gameState = gameStates[2]; //set gameState to PLAYING
                     }
                 }
 

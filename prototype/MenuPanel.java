@@ -57,6 +57,7 @@ public class MenuPanel extends JPanel {
         try {
             String addUser = "ADD USER " + userName;
             client.send(SERVERIP, addUser);
+            client.close();
             //String gridSize = "GRID SIZE ";
             //client.send(SERVERIP, gridSize);
             //System.out.println(message);

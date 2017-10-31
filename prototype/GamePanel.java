@@ -16,20 +16,25 @@ public class GamePanel extends JPanel implements ActionListener {
     private int yVelocity = 0;
     private ArrayList usedCoordinates = new ArrayList();
     private Timer t;
+    //private Color colours[] = {Color.cyan, Color.red};
+    private String userName;
+    private String playerString;
 
-    public GamePanel(int gridHeight, int gridWidth, String userName, String serverIP, int clientPort) {
+    public GamePanel(int gridHeight, int gridWidth, String userName, String serverIP, int clientPort, String playerString) {
         this.SERVERIP = serverIP;
         this.CLIENTPORT = clientPort;
+        this.userName = userName;
+        this.playerString = playerString;
+        System.out.println(playerString);
+        System.out.println(userName);
         try {
             this.client = new Client(CLIENTPORT);
         }catch (Exception e) {
             e.printStackTrace();
         }
 
-        //JFrame test = new JFrame();
-        //test.setSize(900,900);
-        //test.add(this);
-        //test.setVisible(true);
+
+
         setDoubleBuffered(true);
         setPreferredSize(new Dimension(gridHeight, gridWidth));
         t = new Timer(7, this);
@@ -51,9 +56,36 @@ public class GamePanel extends JPanel implements ActionListener {
     public void paintComponent(Graphics g) {
         //super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        g2d.setColor(Color.cyan);
-        g2d.fillRect(x, y, 10, 10);
+        String playerArray[] = playerString.split("-");
+        for(String player : playerArray) {
+            //System.out.print(player);
+            String playerComponent[] = player.split(",");
+                if(playerComponent[0].equals(userName)) {
+                    g2d.setColor(Color.CYAN);
+                    //g2d.fillRect(Integer.parseInt(playerComponent[1]), Integer.parseInt(playerComponent[2]), 10, 10);
+                } else {
+                    g2d.setColor(Color.RED);
+                    //g2d.fillRect(Integer.parseInt(playerComponent[1]), Integer.parseInt(playerComponent[2]), 10, 10);
+                }
+            g2d.fillRect(Integer.parseInt(playerComponent[1]), Integer.parseInt(playerComponent[2]), 10, 10);
+        }
+        //String playerArray[] = playerString.split("-");
+        //for(String player : playerArray) {
+        //    //System.out.println(player);
+        //    String components[] = player.split(",");
+        //    if(components[0].equals(userName)) {
+        //        g2d.setColor(colours[0]);
+        //        g2d.fillRect(Integer.parseInt(components[1]), Integer.parseInt(components[2]), 10, 10);
+        //    } else {
+        //        g2d.setColor(colours[1]);
+        //        g2d.fillRect(Integer.parseInt(components[1]), Integer.parseInt(components[2]), 10, 10);
+        //    }
+        //g2d.fillRect(Integer.parseInt(components[1]), Integer.parseInt(components[2]), 10, 10);
+        //System.out.println(components[1]);
+        //System.out.println(components[2]);
 
+
+        //}
     }
 
     Action upAction = new AbstractAction() {

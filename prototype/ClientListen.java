@@ -12,6 +12,7 @@ public class ClientListen extends Thread {
     GameFrame gameFrame;
     GamePanel gamePanel;
     String userName = null;
+    String playerString;
     TestLightCycle[] lightCycles = new TestLightCycle[3];
 
     ClientListen() {
@@ -38,7 +39,9 @@ public class ClientListen extends Thread {
                     this.gridWidth = Integer.parseInt(gridSizeArray[2]);
 
                 } else if(messageString.startsWith("PLAY")) {
-                    this.gamePanel = gameFrame.loadGame(userName);
+                    String playArray[] = messageString.split(" ");
+                    this.playerString = playArray[1].trim();
+                    this.gamePanel = gameFrame.loadGame(userName, playerString);
 
                     //GamePanel gamePanel = new GamePanel(gridHeight, gridWidth);
                     //gameFrame.setContentPane(gamePanel); //given NullPointerException?????

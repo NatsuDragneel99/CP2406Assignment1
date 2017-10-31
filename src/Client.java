@@ -30,4 +30,9 @@ class Client {
     public int getPort() {
         return direct.getLocalPort();
     }
+
+    void close() throws Exception{
+        //direct.leaveGroup(multicastIP);
+        direct.close();
+    }
 }
