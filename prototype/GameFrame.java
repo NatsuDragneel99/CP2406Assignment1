@@ -49,13 +49,14 @@ public class GameFrame extends JFrame {
         setVisible(true);
     }
 
-    void loadGame() {
+    GamePanel loadGame() {
         gamePanel = new GamePanel(gridHeight, gridWidth);
         setContentPane(gamePanel);
         invalidate();
         validate();
         repaint();
         setVisible(true);
+        return gamePanel;
     }
 
     //public static void main(String[] args) {

@@ -10,6 +10,7 @@ public class ClientListen extends Thread {
     int gridHeight;
     int gridWidth;
     GameFrame gameFrame;
+    GamePanel gamePanel;
     TestLightCycle[] lightCycles = new TestLightCycle[3];
 
     ClientListen() {
@@ -36,7 +37,7 @@ public class ClientListen extends Thread {
                     this.gridWidth = Integer.parseInt(gridSizeArray[2]);
 
                 } else if(messageString.startsWith("PLAY")) {
-                    gameFrame.loadGame();
+                    this.gamePanel = gameFrame.loadGame();
 
                     //GamePanel gamePanel = new GamePanel(gridHeight, gridWidth);
                     //gameFrame.setContentPane(gamePanel); //given NullPointerException?????
