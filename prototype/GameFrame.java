@@ -8,7 +8,7 @@ public class GameFrame extends JFrame {
     MenuPanel menuPanel;
     GamePanel gamePanel;
 
-    final String SERVERIP = "10.140.33.237"; //IP of the multicast server being connected to.
+    final String SERVERIP = "10.140.33.243"; //IP of the multicast server being connected to.
     final int CLIENTPORT = 49324; //Change for each individual client.
 
 
@@ -18,7 +18,7 @@ public class GameFrame extends JFrame {
         this.gridWidth = gridWidth;
         //this.grid = new GridTile[gridHeight][gridWidth];
         setTitle("TRON");
-        setSize(900,900);
+        setSize(900, 900);
         setBackground(Color.BLACK);
         setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);

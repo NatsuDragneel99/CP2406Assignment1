@@ -126,6 +126,8 @@ public class RunServerSide {
 
             } else if (message.startsWith("GAME LEADERBOARD")) {
 
+            } else {
+                playerString = message.trim();
             }
 
             //for (String player : players) {

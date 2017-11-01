@@ -2,6 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
 import java.net.MulticastSocket;
 
 public class MenuPanel extends JPanel {
@@ -57,7 +60,7 @@ public class MenuPanel extends JPanel {
         try {
             String addUser = "ADD USER " + userName;
             client.send(SERVERIP, addUser);
-            client.close();
+            client.closeSocket();
             //String gridSize = "GRID SIZE ";
             //client.send(SERVERIP, gridSize);
             //System.out.println(message);

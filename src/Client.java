@@ -31,8 +31,7 @@ class Client {
         return direct.getLocalPort();
     }
 
-    void close() throws Exception{
-        //direct.leaveGroup(multicastIP);
+    void closeSocket() throws Exception{
         direct.close();
     }
 }
