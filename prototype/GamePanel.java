@@ -12,11 +12,12 @@ public class GamePanel extends JPanel implements ActionListener {
 
     private int x = 50;
     private int y = 50;
-    private int xVelocity = 1;
+    private int xVelocity = 0;
     private int yVelocity = 0;
-    private ArrayList usedCoordinates = new ArrayList();
+    //private ArrayList usedCoordinates = new ArrayList();
     private Timer t;
     //private Color colours[] = {Color.cyan, Color.red};
+    int[][] playerCoordinates;
     private String userName;
     private String playerString;
 
@@ -25,8 +26,28 @@ public class GamePanel extends JPanel implements ActionListener {
         this.CLIENTPORT = clientPort;
         this.userName = userName;
         this.playerString = playerString;
-        System.out.println(playerString);
-        System.out.println(userName);
+        String playerArray[] = playerString.split("-");
+        for(String player : playerArray) {
+            //System.out.print(player);
+            String playerComponent[] = player.split(",");
+            if(playerComponent[0].equals(userName)) {
+                if(Integer.parseInt(playerComponent[1]) < gridWidth/2 && Integer.parseInt(playerComponent[2]) < gridHeight/2) { //bike in top left corner it goes down
+                    this.xVelocity = 0;
+                    this.yVelocity = 1;
+                } else if(Integer.parseInt(playerComponent[1]) > gridWidth/2 && Integer.parseInt(playerComponent[2]) > gridHeight/2) { //bike in top right corner it goes left
+                    this.xVelocity = -1;
+                    this.yVelocity = 0;
+                } else if(Integer.parseInt(playerComponent[1]) < gridWidth/2 && Integer.parseInt(playerComponent[2]) > gridHeight/2) { //bike in bottom left corner it goes up
+                    this.xVelocity = 0;
+                    this.yVelocity = -1;
+                }else if(Integer.parseInt(playerComponent[1]) > gridWidth/2 && Integer.parseInt(playerComponent[2]) > gridHeight/2) { //bike in bottom right corner it goes right
+                    this.xVelocity = 1;
+                    this.yVelocity = 0;
+                }
+            }
+        }
+        //System.out.println(playerString);
+        //System.out.println(userName);
         try {
             this.client = new Client(CLIENTPORT);
         }catch (Exception e) {
@@ -69,23 +90,10 @@ public class GamePanel extends JPanel implements ActionListener {
                 }
             g2d.fillRect(Integer.parseInt(playerComponent[1]), Integer.parseInt(playerComponent[2]), 10, 10);
         }
-        //String playerArray[] = playerString.split("-");
-        //for(String player : playerArray) {
-        //    //System.out.println(player);
-        //    String components[] = player.split(",");
-        //    if(components[0].equals(userName)) {
-        //        g2d.setColor(colours[0]);
-        //        g2d.fillRect(Integer.parseInt(components[1]), Integer.parseInt(components[2]), 10, 10);
-        //    } else {
-        //        g2d.setColor(colours[1]);
-        //        g2d.fillRect(Integer.parseInt(components[1]), Integer.parseInt(components[2]), 10, 10);
-        //    }
-        //g2d.fillRect(Integer.parseInt(components[1]), Integer.parseInt(components[2]), 10, 10);
-        //System.out.println(components[1]);
-        //System.out.println(components[2]);
+    }
 
-
-        //}
+    void getNewCoordinates(String newPlayerString) {
+        this.playerString = newPlayerString;
     }
 
     Action upAction = new AbstractAction() {
@@ -141,7 +149,7 @@ public class GamePanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         x = x + xVelocity;
         y = y + yVelocity;
-        usedCoordinates.add(x + "," + y);
+        //usedCoordinates.add(x + "," + y);
         repaint();
     }
 

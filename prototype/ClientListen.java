@@ -57,7 +57,8 @@ public class ClientListen extends Thread {
                     }
 
                 } else {
-                    //System.out.println(messageString);
+                    this.playerString = messageString;
+                    gamePanel.getNewCoordinates(playerString);
                 }
             }
             } catch (Exception e) {
