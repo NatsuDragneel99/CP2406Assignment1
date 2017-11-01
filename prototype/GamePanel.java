@@ -20,6 +20,7 @@ public class GamePanel extends JPanel implements ActionListener {
     int[][] playerCoordinates;
     private String userName;
     private String playerString;
+    private String updatedPlayerString = "";
 
     public GamePanel(int gridHeight, int gridWidth, String userName, String serverIP, int clientPort, String playerString) {
         this.SERVERIP = serverIP;
@@ -37,12 +38,12 @@ public class GamePanel extends JPanel implements ActionListener {
                 } else if(Integer.parseInt(playerComponent[1]) > gridWidth/2 && Integer.parseInt(playerComponent[2]) > gridHeight/2) { //bike in top right corner it goes left
                     this.xVelocity = -1;
                     this.yVelocity = 0;
-                } else if(Integer.parseInt(playerComponent[1]) < gridWidth/2 && Integer.parseInt(playerComponent[2]) > gridHeight/2) { //bike in bottom left corner it goes up
-                    this.xVelocity = 0;
-                    this.yVelocity = -1;
-                }else if(Integer.parseInt(playerComponent[1]) > gridWidth/2 && Integer.parseInt(playerComponent[2]) > gridHeight/2) { //bike in bottom right corner it goes right
+                } else if(Integer.parseInt(playerComponent[1]) < gridWidth/2 && Integer.parseInt(playerComponent[2]) > gridHeight/2) { //bike in bottom left corner it goes right
                     this.xVelocity = 1;
                     this.yVelocity = 0;
+                }else if(Integer.parseInt(playerComponent[1]) > gridWidth/2 && Integer.parseInt(playerComponent[2]) > gridHeight/2) { //bike in bottom right corner it goes up
+                    this.xVelocity = 0;
+                    this.yVelocity = -1;
                 }
             }
         }
@@ -149,6 +150,26 @@ public class GamePanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         x = x + xVelocity;
         y = y + yVelocity;
+
+        String playerArray[] = playerString.split("-");
+        for(String player : playerArray) {
+            //System.out.print(player);
+            String playerComponent[] = player.split(",");
+            if(playerComponent[0].equals(userName)) {
+                playerComponent[1] = Integer.toString(x);
+                playerComponent[2] = Integer.toString(y);
+            }
+            if(updatedPlayerString.equals("")) {
+                updatedPlayerString = playerComponent[0] + "," + playerComponent[1] + "," + playerComponent[2];
+            } else {
+                updatedPlayerString = updatedPlayerString + "-" + playerComponent[0] + "," + playerComponent[1] + "," + playerComponent[2];
+            }
+
+        }
+        System.out.println("--------------------");
+        System.out.println(updatedPlayerString);
+        System.out.println("--------------------");
+        //client.send(SERVERIP, updatedPlayerString.trim());
         //usedCoordinates.add(x + "," + y);
         repaint();
     }
