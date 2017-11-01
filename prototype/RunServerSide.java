@@ -75,7 +75,7 @@ public class RunServerSide {
                     playerNumber++;
                     if(playerNumber >= MAXPLAYERS) {
                         server.broadcast("PLAY " + playerString);
-                        //gameState = gameStates[2]; //set gameState to PLAYING
+                        gameState = gameStates[2]; //set gameState to PLAYING
                     }
                 }
 
