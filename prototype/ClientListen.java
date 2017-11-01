@@ -1,6 +1,7 @@
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
+import java.net.UnknownHostException;
 
 /**
  * Created by jc428209 on 23/10/17.
@@ -15,7 +16,7 @@ public class ClientListen extends Thread {
     String playerString;
     TestLightCycle[] lightCycles = new TestLightCycle[3];
 
-    ClientListen() {
+    ClientListen() throws UnknownHostException {
         this.gameFrame = new GameFrame(500, 500);
         gameFrame.loadMenu();
     }
@@ -56,10 +57,10 @@ public class ClientListen extends Thread {
                         System.out.println(userName);
                     }
 
-                } else {
-                    this.playerString = messageString;
-                    gamePanel.getNewCoordinates(playerString.trim());
-                }
+                } //else {
+                  //  this.playerString = messageString;
+                  //  gamePanel.getNewCoordinates(playerString.trim());
+                //}
             }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -67,7 +68,7 @@ public class ClientListen extends Thread {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnknownHostException {
         ClientListen client = new ClientListen();
         client.start();
 

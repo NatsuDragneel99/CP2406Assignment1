@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 public class GameFrame extends JFrame {
     //GridTile[][] grid;
@@ -7,12 +9,13 @@ public class GameFrame extends JFrame {
     int gridWidth;
     MenuPanel menuPanel;
     GamePanel gamePanel;
+    //InetAddress address;
 
     final String SERVERIP = "10.140.33.243"; //IP of the multicast server being connected to.
-    final int CLIENTPORT = 49324; //Change for each individual client.
+    final int CLIENTPORT = 49322; //Change for each individual client.
 
 
-    GameFrame(int gridHeight, int gridWidth) {
+    GameFrame(int gridHeight, int gridWidth) throws UnknownHostException {
         //setLayout(new FlowLayout());
         this.gridHeight = gridHeight;
         this.gridWidth = gridWidth;
@@ -24,6 +27,7 @@ public class GameFrame extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
+        //this.address = InetAddress.getByName(SERVERIP);
 
 
 

@@ -83,7 +83,7 @@ public class RunServerSide {
                 String[] userActionArray = message.split(" ");
                 if(userActionArray[2].equals("TURN")) {
                     if(userActionArray[3].equals("left")) {
-                            for(String player: players) {
+                        for(String player: players) {
                             String[] playerArray = player.split(",");
                             if(playerArray[0].equals(userActionArray[1])) {
                                 //increment x coordinate of light cycle selected by -1
@@ -126,8 +126,6 @@ public class RunServerSide {
 
             } else if (message.startsWith("GAME LEADERBOARD")) {
 
-            } else {
-                playerString = message.trim();
             }
 
             //for (String player : players) {

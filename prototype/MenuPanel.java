@@ -16,6 +16,7 @@ public class MenuPanel extends JPanel {
     GameFrame gameFrame;
     MulticastServer server;
     boolean userAdded;
+    InetAddress address;
 
     public MenuPanel(GameFrame gameFrame, String serverIP, int clientPort){
         this.SERVERIP = serverIP;

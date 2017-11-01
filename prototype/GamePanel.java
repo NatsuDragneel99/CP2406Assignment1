@@ -24,6 +24,7 @@ public class GamePanel extends JPanel implements ActionListener {
     private String userName;
     private String playerString;
     private String updatedPlayerString = "";
+    InetAddress address;
 
     public GamePanel(int gridHeight, int gridWidth, String userName, String serverIP, int clientPort, String playerString) {
         this.SERVERIP = serverIP;
@@ -59,11 +60,12 @@ public class GamePanel extends JPanel implements ActionListener {
         }
         //System.out.println(playerString);
         //System.out.println(userName);
-        try {
-            this.client = new Client(CLIENTPORT);
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
+
+        //try {
+        //    this.client = new Client(CLIENTPORT);
+        //}catch (Exception e) {
+        //    e.printStackTrace();
+        //}
 
 
 
@@ -199,14 +201,14 @@ public class GamePanel extends JPanel implements ActionListener {
         System.out.println("--------------------");
         //client.send(SERVERIP, updatedPlayerString.trim());
         //usedCoordinates.add(x + "," + y);
-        try {
-            client.send(SERVERIP, updatedPlayerString.trim());
-            client.closeSocket();
-
-        } catch (Exception e1) {
-            e1.printStackTrace();
-        }
-        this.updatedPlayerString = "";
+        //try {
+        //    client.send(SERVERIP, updatedPlayerString.trim());
+        //    client.closeSocket();
+        //
+        //} catch (Exception e1) {
+        //    e1.printStackTrace();
+        //}
+        //this.updatedPlayerString = "";
         repaint();
     }
 
