@@ -192,11 +192,14 @@ public class RunServerSide {
 
                     playerString = "";
                     for (String player : players) {
-                        if (playerString.equals("")) {
-                            playerString = player;
-                        } else {
-                            playerString = playerString + "-" + player;
+                        if(player != null) {
+                            if (playerString.equals("")) {
+                                playerString = player;
+                            } else {
+                                playerString = playerString + "-" + player;
+                            }
                         }
+
                     }
                     messageNumber++;
                     if(playerNumber == MAXPLAYERS) {
@@ -207,6 +210,23 @@ public class RunServerSide {
                 }
 
             } else if (message.startsWith("REMOVE USER")) {
+                String[] removeUserArray = message.trim().split(" ");
+                for(int i = 0; i < players.length; i++) {
+                     String[] playerArray = players[i].split(",");
+                     if(playerArray[0].equals(removeUserArray[2])) {
+                         players[i] = null;
+                     }
+                 }
+                 playerString = "";
+                 for (String player : players) {
+                     if(player != null) {
+                         if (playerString.equals("")) {
+                             playerString = player;
+                         } else {
+                             playerString = playerString + "-" + player;
+                         }
+                     }
+                 }
 
             } else if (message.startsWith("GRID SIZE")) {
                 server.broadcast("GRID SIZE " + gridHeightString + " " + gridWidthString);

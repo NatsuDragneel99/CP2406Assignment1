@@ -62,10 +62,6 @@ public class MenuPanel extends JPanel {
         try {
             String addUser = "ADD USER " + userName;
             client.send(SERVERIP, addUser);
-            //client.closeSocket();
-            //String gridSize = "GRID SIZE ";
-            //client.send(SERVERIP, gridSize);
-            //System.out.println(message);
 
         }catch (Exception e) {
             e.printStackTrace();
