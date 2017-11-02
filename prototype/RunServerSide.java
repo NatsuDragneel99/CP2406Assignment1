@@ -43,6 +43,7 @@ public class RunServerSide {
         }
 
         int playerNumber = 0;
+        int messageNumber = 0;
         while (true) {
             String message = server.read();
             System.out.println(message);
@@ -81,72 +82,127 @@ public class RunServerSide {
                 }
 
             } else if (message.startsWith("USER")) {
-                playerNumber = 0;
                 String[] userActionArray = message.trim().split(" ");
                 if(userActionArray[2].equals("TURN")) {
-
                     if(userActionArray[3].equals("left")) {
-                        for(String player: players) {
-                            String[] playerArray = player.split(",");
+                        for(int i = 0; i < players.length; i++) {
+                            String[] playerArray = players[i].split(",");
                             if(playerArray[0].equals(userActionArray[1])) {
                                 //increment x coordinate of light cycle selected by -1
                                 int newX = Integer.parseInt(playerArray[1]) - 1;
                                 int newY = Integer.parseInt(playerArray[2]);
                                 playerArray[1] = Integer.toString(newX);
                                 playerArray[2] = Integer.toString(newY);
-                                players[player.indexOf(player)] = playerArray[0] + "," + playerArray[1] + "," + playerArray[2]; //THIS THING DOESN'T WORK NEED TO USE INDEX THINGS
+                                players[i] = playerArray[0] + "," + playerArray[1] + "," + playerArray[2];
+                                System.out.println(players[i]);
                             }
+
                         }
+                        //for(String player: players) {
+                        //    String[] playerArray = player.split(",");
+                        //    if(playerArray[0].equals(userActionArray[1])) {
+                        //        //increment x coordinate of light cycle selected by -1
+                        //        int newX = Integer.parseInt(playerArray[1]) - 1;
+                        //        int newY = Integer.parseInt(playerArray[2]);
+                        //        playerArray[1] = Integer.toString(newX);
+                        //        playerArray[2] = Integer.toString(newY);
+                        //        players[player.indexOf(player)] = playerArray[0] + "," + playerArray[1] + "," + playerArray[2]; //THIS THING DOESN'T WORK NEED TO USE INDEX THINGS
+                        //    }
+                        //}
                     } else if(userActionArray[3].equals("right")) {
-                        for(String player: players) {
-                            String[] playerArray = player.split(",");
+                        for(int i = 0; i < players.length; i++) {
+                            String[] playerArray = players[i].split(",");
                             if(playerArray[0].equals(userActionArray[1])) {
-                                //increment x coordinate of light cycle selected by +1
+                                //increment x coordinate of light cycle selected by -1
                                 int newX = Integer.parseInt(playerArray[1]) + 1;
                                 int newY = Integer.parseInt(playerArray[2]);
                                 playerArray[1] = Integer.toString(newX);
                                 playerArray[2] = Integer.toString(newY);
-                                players[player.indexOf(player)] = playerArray[0] + "," + playerArray[1] + "," + playerArray[2]; //THIS THING DOESN'T WORK NEED TO USE INDEX THINGS
+                                players[i] = playerArray[0] + "," + playerArray[1] + "," + playerArray[2];
+                                System.out.println(players[i]);
                             }
+
                         }
+                        //for(String player: players) {
+                        //    String[] playerArray = player.split(",");
+                        //    if(playerArray[0].equals(userActionArray[1])) {
+                        //        //increment x coordinate of light cycle selected by +1
+                        //        int newX = Integer.parseInt(playerArray[1]) + 1;
+                        //        int newY = Integer.parseInt(playerArray[2]);
+                        //        playerArray[1] = Integer.toString(newX);
+                        //        playerArray[2] = Integer.toString(newY);
+                        //        players[player.indexOf(player)] = playerArray[0] + "," + playerArray[1] + "," + playerArray[2]; //THIS THING DOESN'T WORK NEED TO USE INDEX THINGS
+                        //    }
+                        //}
                     } else if(userActionArray[3].equals("up")) {
-                        for(String player: players) {
-                            String[] playerArray = player.split(",");
+                        for(int i = 0; i < players.length; i++) {
+                            String[] playerArray = players[i].split(",");
                             if(playerArray[0].equals(userActionArray[1])) {
-                                //increment y coordinate of light cycle selected by -1
+                                //increment x coordinate of light cycle selected by -1
                                 int newX = Integer.parseInt(playerArray[1]);
                                 int newY = Integer.parseInt(playerArray[2]) - 1;
                                 playerArray[1] = Integer.toString(newX);
                                 playerArray[2] = Integer.toString(newY);
-                                players[player.indexOf(player)] = playerArray[0] + "," + playerArray[1] + "," + playerArray[2]; //THIS THING DOESN'T WORK NEED TO USE INDEX THINGS
+                                players[i] = playerArray[0] + "," + playerArray[1] + "," + playerArray[2];
+                                System.out.println(players[i]);
                             }
+
                         }
+                        //for(String player: players) {
+                        //    String[] playerArray = player.split(",");
+                        //    if(playerArray[0].equals(userActionArray[1])) {
+                        //        //increment y coordinate of light cycle selected by -1
+                        //        int newX = Integer.parseInt(playerArray[1]);
+                        //        int newY = Integer.parseInt(playerArray[2]) - 1;
+                        //        playerArray[1] = Integer.toString(newX);
+                        //        playerArray[2] = Integer.toString(newY);
+                        //        players[player.indexOf(player)] = playerArray[0] + "," + playerArray[1] + "," + playerArray[2]; //THIS THING DOESN'T WORK NEED TO USE INDEX THINGS
+                        //    }
+                        //}
                     } else if(userActionArray[3].equals("down")) {
-                        for(String player: players) {
-                            String[] playerArray = player.split(",");
+                        for(int i = 0; i < players.length; i++) {
+                            String[] playerArray = players[i].split(",");
                             if(playerArray[0].equals(userActionArray[1])) {
-                                //increment x coordinate of light cycle selected by +1
+                                //increment x coordinate of light cycle selected by -1
                                 int newX = Integer.parseInt(playerArray[1]);
                                 int newY = Integer.parseInt(playerArray[2]) + 1;
                                 playerArray[1] = Integer.toString(newX);
                                 playerArray[2] = Integer.toString(newY);
-                                players[player.indexOf(player)] = playerArray[0] + "," + playerArray[1] + "," + playerArray[2]; //THIS THING DOESN'T WORK NEED TO USE INDEX THINGS
+                                players[i] = playerArray[0] + "," + playerArray[1] + "," + playerArray[2];
+                                System.out.println(players[i]);
                             }
+
+                        }
+                        //for(String player: players) {
+                        //    String[] playerArray = player.split(",");
+                        //    if(playerArray[0].equals(userActionArray[1])) {
+                        //        //increment x coordinate of light cycle selected by +1
+                        //        int newX = Integer.parseInt(playerArray[1]);
+                        //        int newY = Integer.parseInt(playerArray[2]) + 1;
+                        //        playerArray[1] = Integer.toString(newX);
+                        //        playerArray[2] = Integer.toString(newY);
+                        //        players[player.indexOf(player)] = playerArray[0] + "," + playerArray[1] + "," + playerArray[2]; //THIS THING DOESN'T WORK NEED TO USE INDEX THINGS
+                        //    }
+                        //}
+                    }
+
+                    //for (String player : players) {
+                    //    System.out.print(player + "-");
+                    //}
+
+                    playerString = "";
+                    for (String player : players) {
+                        if (playerString.equals("")) {
+                            playerString = player;
+                        } else {
+                            playerString = playerString + "-" + player;
                         }
                     }
-                    playerNumber++;
+                    messageNumber++;
                     if(playerNumber == MAXPLAYERS) {
-                        playerString = "";
-                        for (String player : players) {
-                            if (playerString.equals("")) {
-                                playerString = player;
-                            } else {
-                                playerString = playerString + "-" + player;
-                            }
-                        }
                         System.out.println(playerString);
                         server.broadcast(playerString);
-                        playerNumber = 0;
+                        messageNumber = 0;
                     }
                 }
 

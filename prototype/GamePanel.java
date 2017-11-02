@@ -103,9 +103,11 @@ public class GamePanel extends JPanel implements ActionListener {
             String playerName = playerComponent[0].trim();
                 if(playerName.equals(userName)) {
                     g2d.setColor(Color.CYAN);
+                    //g2d.fillRect(Integer.parseInt(playerComponent[1].trim()), Integer.parseInt(playerComponent[2].trim()), 10, 10);
                     //g2d.fillRect(Integer.parseInt(playerComponent[1]), Integer.parseInt(playerComponent[2]), 10, 10);
                 } else {
                     g2d.setColor(Color.RED);
+                    //g2d.fillRect(Integer.parseInt(playerComponent[1].trim()), Integer.parseInt(playerComponent[2].trim()), 10, 10);
                     //g2d.fillRect(Integer.parseInt(playerComponent[1]), Integer.parseInt(playerComponent[2]), 10, 10);
                 }
             g2d.fillRect(Integer.parseInt(playerComponent[1].trim()), Integer.parseInt(playerComponent[2].trim()), 10, 10);
@@ -113,7 +115,13 @@ public class GamePanel extends JPanel implements ActionListener {
     }
 
     void getNewCoordinates(String newPlayerString) {
+        System.out.println("***********");
+        System.out.println("Old " + playerString);
+        System.out.println("Received " + newPlayerString.trim());
         this.playerString = newPlayerString.trim();
+        System.out.println("New" + playerString);
+        System.out.println("***********");
+
     }
 
     Action upAction = new AbstractAction() {
