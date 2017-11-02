@@ -24,6 +24,7 @@ public class GamePanel extends JPanel implements ActionListener {
     private String userName;
     private String playerString;
     private String updatedPlayerString = "";
+    private int score;
     InetAddress address;
     String userAction;
     GameFrame gameFrame;
@@ -107,8 +108,10 @@ public class GamePanel extends JPanel implements ActionListener {
                 try {
                     g2d.setColor(Color.CYAN);
                     g2d.fillRect(Integer.parseInt(playerComponent[1].trim()), Integer.parseInt(playerComponent[2].trim()), 10, 10);
+                    score++;
                 }catch(Exception e) {
-                    gameFrame.loadScoreBoard(45);
+                    t.stop();
+                    gameFrame.loadScoreBoard(score);
                 }
             } else {
                 try {
