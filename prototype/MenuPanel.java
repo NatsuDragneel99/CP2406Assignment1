@@ -27,10 +27,12 @@ public class MenuPanel extends JPanel {
         //test.setSize(900,900);
         //test.add(this);
         //test.setVisible(true);
-        setLayout(new FlowLayout());
+        //setLayout(new FlowLayout());
+        setLayout(new GridBagLayout());
         setVisible(true);
         setBackground(Color.BLACK);
         JButton joinGame = new JButton("Join Game");
+        joinGame.setPreferredSize(new Dimension(250, 100));
         //ClientListen thread = new ClientListen();
         //thread.start();
 
@@ -39,7 +41,6 @@ public class MenuPanel extends JPanel {
         //}catch (Exception e) {
         //    e.printStackTrace();
         //}
-
         add(joinGame);
         joinGame.addActionListener(new ActionListener() {
             @Override
@@ -49,6 +50,7 @@ public class MenuPanel extends JPanel {
                     addUser();
                     //gameFrame.loadGame();
                 }
+                joinGame.setVisible(false);
             }
         });
 
