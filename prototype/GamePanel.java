@@ -102,15 +102,21 @@ public class GamePanel extends JPanel implements ActionListener {
             String playerComponent[] = player.trim().split(",");
             String playerName = playerComponent[0].trim();
             if(playerName.equals(userName)) {
-                g2d.setColor(Color.CYAN);
-                //g2d.fillRect(Integer.parseInt(playerComponent[1].trim()), Integer.parseInt(playerComponent[2].trim()), 10, 10);
-                //g2d.fillRect(Integer.parseInt(playerComponent[1]), Integer.parseInt(playerComponent[2]), 10, 10);
+                try {
+                    g2d.setColor(Color.CYAN);
+                    g2d.fillRect(Integer.parseInt(playerComponent[1].trim()), Integer.parseInt(playerComponent[2].trim()), 10, 10);
+                }catch(Exception e) {
+                    System.out.println("NICE dickhead (you)");
+                }
             } else {
-                g2d.setColor(Color.RED);
-                //g2d.fillRect(Integer.parseInt(playerComponent[1].trim()), Integer.parseInt(playerComponent[2].trim()), 10, 10);
-                //g2d.fillRect(Integer.parseInt(playerComponent[1]), Integer.parseInt(playerComponent[2]), 10, 10);
+                try {
+                    g2d.setColor(Color.RED);
+                    g2d.fillRect(Integer.parseInt(playerComponent[1].trim()), Integer.parseInt(playerComponent[2].trim()), 10, 10);
+                }catch(Exception e) {
+                    System.out.println("NICE dickhead (other blokes)");
+                }
             }
-            g2d.fillRect(Integer.parseInt(playerComponent[1].trim()), Integer.parseInt(playerComponent[2].trim()), 10, 10);
+
         }
     }
 
