@@ -10,8 +10,8 @@ public class GameFrame extends JFrame {
     MenuPanel menuPanel;
     GamePanel gamePanel;
     //InetAddress address;
-
-    final String SERVERIP = "10.140.33.243"; //IP of the multicast server being connected to.
+    Client client;
+    final String SERVERIP = "10.140.33.229"; //IP of the multicast server being connected to.
     final int CLIENTPORT = 49322; //Change for each individual client.
 
 
@@ -28,7 +28,11 @@ public class GameFrame extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
         //this.address = InetAddress.getByName(SERVERIP);
-
+        try {
+            this.client = new Client(CLIENTPORT);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
 
@@ -48,7 +52,7 @@ public class GameFrame extends JFrame {
 
     }
     void loadMenu() {
-        menuPanel = new MenuPanel(this, SERVERIP, CLIENTPORT);
+        menuPanel = new MenuPanel(this, SERVERIP, CLIENTPORT, client);
         setContentPane(menuPanel);
         invalidate();
         validate();
@@ -57,7 +61,7 @@ public class GameFrame extends JFrame {
     }
 
     GamePanel loadGame(String userName, String playerString) {
-        gamePanel = new GamePanel(gridHeight, gridWidth, userName, SERVERIP, CLIENTPORT, playerString);
+        gamePanel = new GamePanel(gridHeight, gridWidth, userName, SERVERIP, CLIENTPORT, playerString, client);
         setContentPane(gamePanel);
         invalidate();
         validate();

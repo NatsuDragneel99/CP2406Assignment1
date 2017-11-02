@@ -26,9 +26,10 @@ public class GamePanel extends JPanel implements ActionListener {
     private String updatedPlayerString = "";
     InetAddress address;
 
-    public GamePanel(int gridHeight, int gridWidth, String userName, String serverIP, int clientPort, String playerString) {
+    public GamePanel(int gridHeight, int gridWidth, String userName, String serverIP, int clientPort, String playerString, Client client) {
         this.SERVERIP = serverIP;
         this.CLIENTPORT = clientPort;
+        this.client = client;
         this.userName = userName.trim();
         this.playerString = playerString.trim();
         setSize(new Dimension(gridHeight, gridWidth));

@@ -18,10 +18,11 @@ public class MenuPanel extends JPanel {
     boolean userAdded;
     InetAddress address;
 
-    public MenuPanel(GameFrame gameFrame, String serverIP, int clientPort){
+    public MenuPanel(GameFrame gameFrame, String serverIP, int clientPort, Client client){
         this.SERVERIP = serverIP;
         this.CLIENTPORT = clientPort;
         this.gameFrame = gameFrame;
+        this.client = client;
         //JFrame test = new JFrame();
         //test.setSize(900,900);
         //test.add(this);
@@ -33,11 +34,11 @@ public class MenuPanel extends JPanel {
         //ClientListen thread = new ClientListen();
         //thread.start();
 
-        try {
-            this.client = new Client(CLIENTPORT);
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
+        //try {
+        //    this.client = new Client(CLIENTPORT);
+        //}catch (Exception e) {
+        //    e.printStackTrace();
+        //}
 
         add(joinGame);
         joinGame.addActionListener(new ActionListener() {
