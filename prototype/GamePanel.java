@@ -35,7 +35,7 @@ public class GamePanel extends JPanel implements ActionListener {
         this.client = client;
         this.userName = userName.trim();
         this.playerString = playerString.trim();
-        setSize(new Dimension(900,900));
+        //setSize(new Dimension(900,900));
         String playerArray[] = playerString.trim().split("-");
         for(String player : playerArray) {
             //System.out.print(player);
