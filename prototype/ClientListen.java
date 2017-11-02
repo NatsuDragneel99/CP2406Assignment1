@@ -57,10 +57,10 @@ public class ClientListen extends Thread {
                         System.out.println(userName);
                     }
 
-                } //else {
-                  //  this.playerString = messageString;
-                  //  gamePanel.getNewCoordinates(playerString.trim());
-                //}
+                } else {
+                    this.playerString = messageString.trim();
+                    gamePanel.getNewCoordinates(playerString);
+                }
             }
             } catch (Exception e) {
                 e.printStackTrace();

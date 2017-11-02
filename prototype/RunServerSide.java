@@ -47,11 +47,11 @@ public class RunServerSide {
             String message = server.read();
             System.out.println(message);
 
-            if (gameState.equals(gameStates[2]))  { //if gameState = PLAYING
-                server.broadcast(playerString);
+            //if (gameState.equals(gameStates[2]))  { //if gameState = PLAYING
+            //    server.broadcast(playerString);
 
 
-            } if (message.startsWith("ADD USER")) {
+             if (message.startsWith("ADD USER")) {
                 if (players[2] != null) {
                     server.broadcast("FAILED too many players");
                 } else {
@@ -76,10 +76,12 @@ public class RunServerSide {
                     if(playerNumber >= MAXPLAYERS) {
                         server.broadcast("PLAY " + playerString);
                         gameState = gameStates[2]; //set gameState to PLAYING
+                        server.broadcast(playerString.trim());
                     }
                 }
 
             } else if (message.startsWith("USER")) {
+                playerNumber = 0;
                 String[] userActionArray = message.trim().split(" ");
                 if(userActionArray[2].equals("TURN")) {
 
@@ -132,15 +134,18 @@ public class RunServerSide {
                             }
                         }
                     }
-                    playerString = "";
-                    for(String player : players) {
-                        if(playerString.equals("")) {
-                            playerString = player;
-                        } else {
-                            playerString = playerString + player;
+                    playerNumber++;
+                    if(playerNumber == MAXPLAYERS) {
+                        playerString = "";
+                        for (String player : players) {
+                            if (playerString.equals("")) {
+                                playerString = player;
+                            } else {
+                                playerString = playerString + "-" + player;
+                            }
                         }
+                        server.broadcast(playerString);
                     }
-                    server.broadcast(playerString);
                 }
 
             } else if (message.startsWith("REMOVE USER")) {

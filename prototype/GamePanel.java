@@ -46,15 +46,19 @@ public class GamePanel extends JPanel implements ActionListener {
                 x = Integer.parseInt(playerComponent[1].trim());
                 y = Integer.parseInt(playerComponent[2].trim());
                 if(x < gridWidth/2 && y < gridHeight/2) { //bike in top left corner it goes down
+                    userAction = "TURN down";
                     this.xVelocity = 0;
                     this.yVelocity = 1;
                 } else if(x > gridWidth/2 && y > gridHeight/2) { //bike in top right corner it goes left
+                    userAction = "TURN left";
                     this.xVelocity = -1;
                     this.yVelocity = 0;
                 } else if(x < gridWidth/2 && y > gridHeight/2) { //bike in bottom left corner it goes right
+                    userAction = "TURN right";
                     this.xVelocity = 1;
                     this.yVelocity = 0;
                 }else if(x > gridWidth/2 && y > gridHeight/2) { //bike in bottom right corner it goes up
+                    userAction = "TURN up";
                     this.xVelocity = 0;
                     this.yVelocity = -1;
                 }
