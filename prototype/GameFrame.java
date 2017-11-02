@@ -60,8 +60,18 @@ public class GameFrame extends JFrame {
         setVisible(true);
     }
 
+    void loadScoreBoard(int score) {
+        ScoreBoard scoreBoard = new ScoreBoard(this, score);
+        setContentPane(scoreBoard);
+        invalidate();
+        validate();
+        repaint();
+        setVisible(true);
+    }
+
+
     GamePanel loadGame(String userName, String playerString) {
-        gamePanel = new GamePanel(gridHeight, gridWidth, userName, SERVERIP, CLIENTPORT, playerString, client);
+        gamePanel = new GamePanel(this, gridHeight, gridWidth, userName, SERVERIP, CLIENTPORT, playerString, client);
         setContentPane(gamePanel);
         invalidate();
         validate();

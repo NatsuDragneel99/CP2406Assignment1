@@ -26,14 +26,16 @@ public class GamePanel extends JPanel implements ActionListener {
     private String updatedPlayerString = "";
     InetAddress address;
     String userAction;
+    GameFrame gameFrame;
 
-    public GamePanel(int gridHeight, int gridWidth, String userName, String serverIP, int clientPort, String playerString, Client client) {
+    public GamePanel(GameFrame gameFrame, int gridHeight, int gridWidth, String userName, String serverIP, int clientPort, String playerString, Client client) {
+        this.gameFrame = gameFrame;
         this.SERVERIP = serverIP;
         this.CLIENTPORT = clientPort;
         this.client = client;
         this.userName = userName.trim();
         this.playerString = playerString.trim();
-        setSize(new Dimension(gridHeight, gridWidth));
+        setSize(new Dimension(900,900));
         String playerArray[] = playerString.trim().split("-");
         for(String player : playerArray) {
             //System.out.print(player);
@@ -106,14 +108,14 @@ public class GamePanel extends JPanel implements ActionListener {
                     g2d.setColor(Color.CYAN);
                     g2d.fillRect(Integer.parseInt(playerComponent[1].trim()), Integer.parseInt(playerComponent[2].trim()), 10, 10);
                 }catch(Exception e) {
-                    System.out.println("NICE dickhead (you)");
+                    gameFrame.loadScoreBoard(45);
                 }
             } else {
                 try {
                     g2d.setColor(Color.RED);
                     g2d.fillRect(Integer.parseInt(playerComponent[1].trim()), Integer.parseInt(playerComponent[2].trim()), 10, 10);
                 }catch(Exception e) {
-                    System.out.println("NICE dickhead (other blokes)");
+
                 }
             }
 
@@ -165,23 +167,6 @@ public class GamePanel extends JPanel implements ActionListener {
             yVelocity = 0;
         }
     };
-
-    void moveUp() {
-        xVelocity = 0;
-        yVelocity = -1;
-    }
-    void moveDown() {
-        xVelocity = 0;
-        yVelocity = 1;
-    }
-    void moveLeft() {
-        xVelocity = -1;
-        yVelocity = 0;
-    }
-    void moveRight() {
-        xVelocity = 1;
-        yVelocity = 0;
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {

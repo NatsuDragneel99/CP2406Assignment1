@@ -12,11 +12,13 @@ import java.net.MulticastSocket;
 public class ScoreBoard extends JPanel {
 
 
-    ScoreBoard(int score) {
+    ScoreBoard(GameFrame gameFrame, int score) {
         setLayout(new FlowLayout());
         setVisible(true);
         setBackground(Color.BLACK);
         JLabel scoreLabel = new JLabel();
         scoreLabel.setText("Your score: " + score);
+        scoreLabel.setForeground(Color.cyan);
+        add(scoreLabel);
     }
 }
