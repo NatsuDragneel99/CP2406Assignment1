@@ -96,6 +96,20 @@ public class RunServerSide {
                                 //increment x coordinate of light cycle selected by +1
                             }
                         }
+                    } else if(userActionArray[3].equals("up")) {
+                        for(String player: players) {
+                            String[] playerArray = player.split(",");
+                            if(playerArray[0].equals(userActionArray[1])) {
+                                //increment x coordinate of light cycle selected by +1
+                            }
+                        }
+                    } else if(userActionArray[3].equals("down")) {
+                        for(String player: players) {
+                            String[] playerArray = player.split(",");
+                            if(playerArray[0].equals(userActionArray[1])) {
+                                //increment x coordinate of light cycle selected by +1
+                            }
+                        }
                     }
                 }
 

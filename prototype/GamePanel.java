@@ -25,6 +25,7 @@ public class GamePanel extends JPanel implements ActionListener {
     private String playerString;
     private String updatedPlayerString = "";
     InetAddress address;
+    String userAction;
 
     public GamePanel(int gridHeight, int gridWidth, String userName, String serverIP, int clientPort, String playerString, Client client) {
         this.SERVERIP = serverIP;
@@ -114,6 +115,7 @@ public class GamePanel extends JPanel implements ActionListener {
     Action upAction = new AbstractAction() {
         //@Override
         public void actionPerformed(ActionEvent e) {
+            userAction = "TURN up";
             xVelocity = 0;
             yVelocity = -1;
         }
@@ -122,6 +124,7 @@ public class GamePanel extends JPanel implements ActionListener {
     Action downAction = new AbstractAction() {
         //@Override
         public void actionPerformed(ActionEvent e) {
+            userAction = "TURN down";
             xVelocity = 0;
             yVelocity = 1;
         }
@@ -130,6 +133,7 @@ public class GamePanel extends JPanel implements ActionListener {
     Action leftAction = new AbstractAction() {
         //@Override
         public void actionPerformed(ActionEvent e) {
+            userAction = "TURN left";
             xVelocity = -1;
             yVelocity = 0;
         }
@@ -138,6 +142,7 @@ public class GamePanel extends JPanel implements ActionListener {
     Action rightAction = new AbstractAction() {
         //@Override
         public void actionPerformed(ActionEvent e) {
+            userAction = "TURN right";
             xVelocity = 1;
             yVelocity = 0;
         }
@@ -165,6 +170,12 @@ public class GamePanel extends JPanel implements ActionListener {
         x = x + xVelocity;
         y = y + yVelocity;
 
+
+        try {
+            client.send(SERVERIP, "TEST");
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
         String playerArray[] = playerString.trim().split("-");
         for(String player : playerArray) {
             //System.out.print(player);
@@ -193,6 +204,35 @@ public class GamePanel extends JPanel implements ActionListener {
             }
 
         }
+
+        //String playerArray[] = playerString.trim().split("-");
+        //for(String player : playerArray) {
+        //    //System.out.print(player);
+        //    String playerComponent[] = player.trim().split(",");
+        //    String playerName = playerComponent[0].trim();
+//
+        //    //System.out.println("--------------------");
+        //    //System.out.println(player);
+        //    //System.out.println("Player Length " + player.length());
+        //    //System.out.println(playerComponent[0]);
+        //    //System.out.println("playerComponent[0] length " + playerComponent[0].length());
+        //    //System.out.println(playerComponent[1]);
+        //    //System.out.println("playerComponent[1] length " + playerComponent[1].length());
+        //    //System.out.println(playerComponent[2]);
+        //    //System.out.println("playerComponent[2] length " + playerComponent[2].length());
+        //    //System.out.println("--------------------");
+//
+        //    if(playerName.equals(userName)) {
+        //        playerComponent[1] = Integer.toString(x);
+        //        playerComponent[2] = Integer.toString(y);
+        //    }
+        //    if(updatedPlayerString.equals("")) {
+        //        updatedPlayerString = playerComponent[0] + "," + playerComponent[1] + "," + playerComponent[2];
+        //    } else {
+        //        updatedPlayerString = updatedPlayerString + "-" + playerComponent[0] + "," + playerComponent[1] + "," + playerComponent[2];
+        //    }
+//
+        //}
         System.out.println("--------------------");
         System.out.println(updatedPlayerString);
         System.out.println("x " + x);
