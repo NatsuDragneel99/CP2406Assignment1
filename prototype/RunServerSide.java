@@ -94,7 +94,7 @@ public class RunServerSide {
                                 int newY = Integer.parseInt(playerArray[2]);
                                 playerArray[1] = Integer.toString(newX);
                                 playerArray[2] = Integer.toString(newY);
-                                players[player.indexOf(player)] = playerArray[0] + "," + playerArray[1] + "," + playerArray[2];
+                                players[player.indexOf(player)] = playerArray[0] + "," + playerArray[1] + "," + playerArray[2]; //THIS THING DOESN'T WORK NEED TO USE INDEX THINGS
                             }
                         }
                     } else if(userActionArray[3].equals("right")) {
@@ -106,7 +106,7 @@ public class RunServerSide {
                                 int newY = Integer.parseInt(playerArray[2]);
                                 playerArray[1] = Integer.toString(newX);
                                 playerArray[2] = Integer.toString(newY);
-                                players[player.indexOf(player)] = playerArray[0] + "," + playerArray[1] + "," + playerArray[2];
+                                players[player.indexOf(player)] = playerArray[0] + "," + playerArray[1] + "," + playerArray[2]; //THIS THING DOESN'T WORK NEED TO USE INDEX THINGS
                             }
                         }
                     } else if(userActionArray[3].equals("up")) {
@@ -118,7 +118,7 @@ public class RunServerSide {
                                 int newY = Integer.parseInt(playerArray[2]) - 1;
                                 playerArray[1] = Integer.toString(newX);
                                 playerArray[2] = Integer.toString(newY);
-                                players[player.indexOf(player)] = playerArray[0] + "," + playerArray[1] + "," + playerArray[2];
+                                players[player.indexOf(player)] = playerArray[0] + "," + playerArray[1] + "," + playerArray[2]; //THIS THING DOESN'T WORK NEED TO USE INDEX THINGS
                             }
                         }
                     } else if(userActionArray[3].equals("down")) {
@@ -130,7 +130,7 @@ public class RunServerSide {
                                 int newY = Integer.parseInt(playerArray[2]) + 1;
                                 playerArray[1] = Integer.toString(newX);
                                 playerArray[2] = Integer.toString(newY);
-                                players[player.indexOf(player)] = playerArray[0] + "," + playerArray[1] + "," + playerArray[2];
+                                players[player.indexOf(player)] = playerArray[0] + "," + playerArray[1] + "," + playerArray[2]; //THIS THING DOESN'T WORK NEED TO USE INDEX THINGS
                             }
                         }
                     }
@@ -144,7 +144,9 @@ public class RunServerSide {
                                 playerString = playerString + "-" + player;
                             }
                         }
+                        System.out.println(playerString);
                         server.broadcast(playerString);
+                        playerNumber = 0;
                     }
                 }
 

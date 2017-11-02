@@ -113,7 +113,7 @@ public class GamePanel extends JPanel implements ActionListener {
     }
 
     void getNewCoordinates(String newPlayerString) {
-        this.playerString = newPlayerString;
+        this.playerString = newPlayerString.trim();
     }
 
     Action upAction = new AbstractAction() {

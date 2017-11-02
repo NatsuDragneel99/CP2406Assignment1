@@ -12,7 +12,7 @@ public class GameFrame extends JFrame {
     //InetAddress address;
     Client client;
     final String SERVERIP = "10.140.33.229"; //IP of the multicast server being connected to.
-    final int CLIENTPORT = 49322; //Change for each individual client.
+    final int CLIENTPORT = 49324; //Change for each individual client.
 
 
     GameFrame(int gridHeight, int gridWidth) throws UnknownHostException {
