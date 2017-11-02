@@ -169,40 +169,11 @@ public class GamePanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         x = x + xVelocity;
         y = y + yVelocity;
-
-
+        String playerMovement = "USER " + userName + " " + userAction;
         try {
-            client.send(SERVERIP, "TEST");
+            client.send(SERVERIP, playerMovement.trim());
         } catch (Exception e1) {
             e1.printStackTrace();
-        }
-        String playerArray[] = playerString.trim().split("-");
-        for(String player : playerArray) {
-            //System.out.print(player);
-            String playerComponent[] = player.trim().split(",");
-            String playerName = playerComponent[0].trim();
-
-            //System.out.println("--------------------");
-            //System.out.println(player);
-            //System.out.println("Player Length " + player.length());
-            //System.out.println(playerComponent[0]);
-            //System.out.println("playerComponent[0] length " + playerComponent[0].length());
-            //System.out.println(playerComponent[1]);
-            //System.out.println("playerComponent[1] length " + playerComponent[1].length());
-            //System.out.println(playerComponent[2]);
-            //System.out.println("playerComponent[2] length " + playerComponent[2].length());
-            //System.out.println("--------------------");
-
-            if(playerName.equals(userName)) {
-                playerComponent[1] = Integer.toString(x);
-                playerComponent[2] = Integer.toString(y);
-            }
-            if(updatedPlayerString.equals("")) {
-                updatedPlayerString = playerComponent[0] + "," + playerComponent[1] + "," + playerComponent[2];
-            } else {
-                updatedPlayerString = updatedPlayerString + "-" + playerComponent[0] + "," + playerComponent[1] + "," + playerComponent[2];
-            }
-
         }
 
         //String playerArray[] = playerString.trim().split("-");
