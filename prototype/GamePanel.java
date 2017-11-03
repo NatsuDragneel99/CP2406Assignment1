@@ -104,26 +104,26 @@ public class GamePanel extends JPanel implements ActionListener {
             //System.out.print(player);
             String playerComponent[] = player.trim().split(",");
             String playerName = playerComponent[0].trim();
-            if(playerName.equals(userName)) {
-                try {
-                    g2d.setColor(Color.CYAN);
-                    g2d.fillRect(Integer.parseInt(playerComponent[1].trim()), Integer.parseInt(playerComponent[2].trim()), 10, 10);
-                    score++;
-                }catch(Exception e) {
+            if(Integer.parseInt(playerComponent[1].trim()) < 0 || Integer.parseInt(playerComponent[2].trim()) < 0 || Integer.parseInt(playerComponent[1].trim()) > 900 || Integer.parseInt(playerComponent[2].trim()) > 900) {
+                if(playerName.equals(userName)) {
                     t.stop();
                     gameFrame.loadScoreBoard(score);
-                }
-            } else {
-                try {
+                }else {
                     g2d.setColor(Color.RED);
                     g2d.fillRect(Integer.parseInt(playerComponent[1].trim()), Integer.parseInt(playerComponent[2].trim()), 10, 10);
-                }catch(Exception e) {
-
+                    score++;
                 }
+            } else if(playerName.equals(userName)) {
+                g2d.setColor(Color.CYAN);
+                g2d.fillRect(Integer.parseInt(playerComponent[1].trim()), Integer.parseInt(playerComponent[2].trim()), 10, 10);
+                score++;
+                } else {
+                g2d.setColor(Color.RED);
+                g2d.fillRect(Integer.parseInt(playerComponent[1].trim()), Integer.parseInt(playerComponent[2].trim()), 10, 10);
             }
-
         }
     }
+
 
     void getNewCoordinates(String newPlayerString) {
         System.out.println("***********");
@@ -175,6 +175,23 @@ public class GamePanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         x = x + xVelocity;
         y = y + yVelocity;
+
+        //String playerArray[] = playerString.trim().split("-");
+        //for(String player : playerArray) {
+        //    //System.out.print(player);
+        //    String playerComponent[] = player.trim().split(",");
+        //    String playerName = playerComponent[0].trim();
+        //    if(playerName.equals(userName)) {
+        //        if(Integer.parseInt(playerComponent[1].trim()) < 0 || Integer.parseInt(playerComponent[2].trim()) < 0 || Integer.parseInt(playerComponent[1].trim()) > 900 || Integer.parseInt(playerComponent[2].trim()) > 900)
+        //    } else {
+        //        t.stop();
+        //        gameFrame.loadScoreBoard(score);
+        //    }
+        //}
+
+
+
+
         String playerMovement = "USER " + userName + " " + userAction;
         try {
             client.send(SERVERIP, playerMovement.trim());
