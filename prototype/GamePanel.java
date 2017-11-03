@@ -31,6 +31,9 @@ public class GamePanel extends JPanel implements ActionListener {
 
     int xPositions[] = new int[50000];
     int yPositions[] = new int[50000];
+    int otherXPositions[] = new int[50000];
+    int otherYPositions[] = new int[50000];
+    Rectangle otherTrails[] = new Rectangle[50000];
     Rectangle trails[] = new Rectangle[50000];
 
     public GamePanel(GameFrame gameFrame, int gridHeight, int gridWidth, String userName, String serverIP, int clientPort, String playerString, Client client) {
@@ -111,6 +114,22 @@ public class GamePanel extends JPanel implements ActionListener {
             if(Integer.parseInt(playerComponent[1].trim()) < 0 || Integer.parseInt(playerComponent[2].trim()) < 0 || Integer.parseInt(playerComponent[1].trim()) > 900 || Integer.parseInt(playerComponent[2].trim()) > 900) {
                 if(playerName.equals(userName)) {
                     t.stop();
+                    for(int position : xPositions) {
+                        System.out.print(position + " ");
+                    }
+                    System.out.println("-----------");
+                    for(int position : yPositions) {
+                        System.out.print(position + " ");
+                    }
+                    System.out.println("-----------");
+                    for(int position : otherXPositions) {
+                        System.out.print(position + " ");
+                    }
+                    System.out.println("-----------");
+                    for(int position : otherYPositions) {
+                        System.out.print(position + " ");
+                    }
+                    System.out.println("-----------");
                     gameFrame.loadScoreBoard(score);
                 }
             } else if(playerName.equals(userName)) {
@@ -118,9 +137,10 @@ public class GamePanel extends JPanel implements ActionListener {
                 g2d.fillRect(Integer.parseInt(playerComponent[1].trim()), Integer.parseInt(playerComponent[2].trim()), 10, 10);
                 score++;
                 } else {
-                g2d.setColor(Color.RED);
-                g2d.fillRect(Integer.parseInt(playerComponent[1].trim()), Integer.parseInt(playerComponent[2].trim()), 10, 10);
+                    g2d.setColor(Color.RED);
+                    g2d.fillRect(Integer.parseInt(playerComponent[1].trim()), Integer.parseInt(playerComponent[2].trim()), 10, 10);
             }
+
         }
     }
 
@@ -176,7 +196,29 @@ public class GamePanel extends JPanel implements ActionListener {
         x = x + xVelocity;
         y = y + yVelocity;
 
-
+        String playerArray[] = playerString.trim().split("-");
+        for(int i = 0; i < 3; i++) {
+            //System.out.print(player);
+            String playerComponent[] = playerArray[i].trim().split(",");
+            String playerName = playerComponent[0].trim();
+            if (playerName.equals(userName)) {
+                for (int f = 0; f < xPositions.length; f++) {
+                    if (xPositions[f] == 0) {
+                        xPositions[f] = Integer.parseInt(playerComponent[1].trim());
+                        yPositions[f] = Integer.parseInt(playerComponent[2].trim());
+                        break;
+                    }
+                }
+            } else {
+                for (int f = 0; f < otherXPositions.length; f++) {
+                    if(otherXPositions[f] == 0) {
+                        otherXPositions[f] = Integer.parseInt(playerComponent[1].trim());
+                        otherYPositions[f] = Integer.parseInt(playerComponent[2].trim());
+                        break;
+                    }
+                }
+            }
+        }
         //String playerArray[] = playerString.trim().split("-");
         //for(String player : playerArray) {
         //    //System.out.print(player);
