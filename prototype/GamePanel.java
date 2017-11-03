@@ -124,12 +124,14 @@ public class GamePanel extends JPanel implements ActionListener {
                 //        g2d.fill(player);
                 //    }
                 //}
+
                 g2d.setColor(Color.CYAN);
                 g2d.fillRect(Integer.parseInt(playerComponent[1].trim()), Integer.parseInt(playerComponent[2].trim()), 10, 10);
                 score++;
-                g2d.setColor(Color.CYAN);
+                //g2d.setColor(Color.CYAN);
                 g2d.setFont(new Font("TimesRoman", Font.PLAIN, 20));
                 g2d.drawString("Score: " + Integer.toString(score), 10, 20);
+
                 } else {
                     try {
                         g2d.setColor(Color.RED);
@@ -138,7 +140,6 @@ public class GamePanel extends JPanel implements ActionListener {
                         System.out.println("Other player crashed");
                     }
             }
-
         }
     }
 
