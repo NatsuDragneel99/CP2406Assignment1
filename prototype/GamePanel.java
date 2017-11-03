@@ -108,11 +108,10 @@ public class GamePanel extends JPanel implements ActionListener {
                 if(playerName.equals(userName)) {
                     t.stop();
                     gameFrame.loadScoreBoard(score);
-                }else {
+                } /*else {
                     g2d.setColor(Color.RED);
                     g2d.fillRect(Integer.parseInt(playerComponent[1].trim()), Integer.parseInt(playerComponent[2].trim()), 10, 10);
-                    score++;
-                }
+                }*/
             } else if(playerName.equals(userName)) {
                 g2d.setColor(Color.CYAN);
                 g2d.fillRect(Integer.parseInt(playerComponent[1].trim()), Integer.parseInt(playerComponent[2].trim()), 10, 10);
@@ -175,6 +174,7 @@ public class GamePanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         x = x + xVelocity;
         y = y + yVelocity;
+
 
         //String playerArray[] = playerString.trim().split("-");
         //for(String player : playerArray) {
