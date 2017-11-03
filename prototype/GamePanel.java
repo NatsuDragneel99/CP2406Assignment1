@@ -29,6 +29,10 @@ public class GamePanel extends JPanel implements ActionListener {
     String userAction;
     GameFrame gameFrame;
 
+    int xPositions[] = new int[50000];
+    int yPositions[] = new int[50000];
+    Rectangle trails[] = new Rectangle[50000];
+
     public GamePanel(GameFrame gameFrame, int gridHeight, int gridWidth, String userName, String serverIP, int clientPort, String playerString, Client client) {
         this.gameFrame = gameFrame;
         this.SERVERIP = serverIP;
@@ -100,18 +104,15 @@ public class GamePanel extends JPanel implements ActionListener {
         //super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         String playerArray[] = playerString.trim().split("-");
-        for(String player : playerArray) {
+        for(int i = 0; i < 3; i++) {
             //System.out.print(player);
-            String playerComponent[] = player.trim().split(",");
+            String playerComponent[] = playerArray[i].trim().split(",");
             String playerName = playerComponent[0].trim();
             if(Integer.parseInt(playerComponent[1].trim()) < 0 || Integer.parseInt(playerComponent[2].trim()) < 0 || Integer.parseInt(playerComponent[1].trim()) > 900 || Integer.parseInt(playerComponent[2].trim()) > 900) {
                 if(playerName.equals(userName)) {
                     t.stop();
                     gameFrame.loadScoreBoard(score);
-                } /*else {
-                    g2d.setColor(Color.RED);
-                    g2d.fillRect(Integer.parseInt(playerComponent[1].trim()), Integer.parseInt(playerComponent[2].trim()), 10, 10);
-                }*/
+                }
             } else if(playerName.equals(userName)) {
                 g2d.setColor(Color.CYAN);
                 g2d.fillRect(Integer.parseInt(playerComponent[1].trim()), Integer.parseInt(playerComponent[2].trim()), 10, 10);
