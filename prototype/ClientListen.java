@@ -14,7 +14,7 @@ public class ClientListen extends Thread {
     private GamePanel gamePanel;
     private String userName = null;
     private String playerString;
-    private TestLightCycle[] lightCycles = new TestLightCycle[3];
+    private NewLightCycle[] lightCycles = new NewLightCycle[3];
 
     ClientListen() throws UnknownHostException {
         this.gameFrame = new GameFrame(900, 900);

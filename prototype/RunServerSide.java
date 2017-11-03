@@ -4,7 +4,7 @@ public class RunServerSide {
     public static void main(String[] args) throws Exception {
         final int MAXPLAYERS = 3;
         String gameStates[] = {"IDLE", "WAITING", "PLAYING", "OVER"};
-        TestLightCycle lightCycles[] = new TestLightCycle[MAXPLAYERS];
+        NewLightCycle lightCycles[] = new NewLightCycle[MAXPLAYERS];
         String players[] = new String[MAXPLAYERS];
         String gameState = gameStates[1];
         String playerString = "";
@@ -41,7 +41,7 @@ public class RunServerSide {
                 } else {
                     String[] gridSizeArray = message.split(" ");
                     String playerName = gridSizeArray[2];
-                    TestLightCycle lightCycle = new TestLightCycle(gridHeight, gridWidth);
+                    NewLightCycle lightCycle = new NewLightCycle(gridHeight, gridWidth);
                     lightCycles[playerNumber] = lightCycle;
 
                     int playerX = lightCycle.getCyclePosition()[0];

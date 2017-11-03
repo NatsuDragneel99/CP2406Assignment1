@@ -7,7 +7,6 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.util.ArrayList;
-
 public class GamePanel extends JPanel implements ActionListener {
     private final String SERVERIP;
     private final int CLIENTPORT;
@@ -42,10 +41,8 @@ public class GamePanel extends JPanel implements ActionListener {
         this.userName = userName.trim();
         this.playerString = playerString.trim();
         setBackground(Color.BLACK);
-        //setSize(new Dimension(900,900));
         String playerArray[] = playerString.trim().split("-");
         for(String player : playerArray) {
-            //System.out.print(player);
             String playerComponent[] = player.trim().split(",");
             String playerName = playerComponent[0].trim();
             if(playerName.equals(userName)) {

@@ -13,10 +13,12 @@ public class ScoreBoard extends JPanel {
 
 
     ScoreBoard(GameFrame gameFrame, int score) {
-        setLayout(new FlowLayout());
+        //setLayout(new FlowLayout());
+        setLayout(new GridBagLayout());
         setVisible(true);
         setBackground(Color.BLACK);
         JLabel scoreLabel = new JLabel();
+        scoreLabel.setFont(new Font("TimesRoman", Font.PLAIN, 40));
         scoreLabel.setText("Your score: " + score);
         scoreLabel.setForeground(Color.cyan);
         add(scoreLabel);
