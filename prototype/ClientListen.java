@@ -8,13 +8,13 @@ import java.net.UnknownHostException;
  */
 
 public class ClientListen extends Thread {
-    int gridHeight;
-    int gridWidth;
-    GameFrame gameFrame;
-    GamePanel gamePanel;
-    String userName = null;
-    String playerString;
-    TestLightCycle[] lightCycles = new TestLightCycle[3];
+    private int gridHeight;
+    private int gridWidth;
+    private GameFrame gameFrame;
+    private GamePanel gamePanel;
+    private String userName = null;
+    private String playerString;
+    private TestLightCycle[] lightCycles = new TestLightCycle[3];
 
     ClientListen() throws UnknownHostException {
         this.gameFrame = new GameFrame(900, 900);
@@ -44,12 +44,6 @@ public class ClientListen extends Thread {
                     this.playerString = playArray[1].trim();
                     this.gamePanel = gameFrame.loadGame(userName, playerString);
 
-                    //GamePanel gamePanel = new GamePanel(gridHeight, gridWidth);
-                    //gameFrame.setContentPane(gamePanel); //given NullPointerException?????
-                    //gameFrame.invalidate();
-                    //gameFrame.validate();
-                    //gameFrame.repaint();
-                    //gameFrame.setVisible(true);
                 } else if(messageString.startsWith("OKAY")) {
                     String[] userNameArray = messageString.trim().split(" ");
                     if(userName == null) {
@@ -72,15 +66,7 @@ public class ClientListen extends Thread {
         ClientListen client = new ClientListen();
         client.start();
 
-        //try {
-        //    GameFrame gameFrame = new GameFrame(10, 10);
-        //    gameFrame.loadMenu();
-        //    //gameFrame.loadGame();
-//
-        //} catch (Exception e) {
-        //    e.printStackTrace();
-        //    System.out.println("TESTING");
-        //}
+
     }
 }
 

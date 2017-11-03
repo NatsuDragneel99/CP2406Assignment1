@@ -2,19 +2,6 @@ import java.util.Scanner;
 
 public class RunServerSide {
     public static void main(String[] args) throws Exception {
-        //if (gameState.equals(gameStates[2]))  { //if gameState = PLAYING
-        //    String playerString = "";
-        //    for(String player : players) {
-        //        if (player != null) {
-        //            if(playerString.equals("")) {
-        //                playerString = playerString + player;
-        //            } else {
-        //                playerString = playerString + " " + player;
-        //            }
-        //        }
-        //        server.broadcast(playerString);
-
-
         final int MAXPLAYERS = 3;
         String gameStates[] = {"IDLE", "WAITING", "PLAYING", "OVER"};
         TestLightCycle lightCycles[] = new TestLightCycle[MAXPLAYERS];
@@ -47,10 +34,6 @@ public class RunServerSide {
         while (true) {
             String message = server.read();
             System.out.println(message);
-
-            //if (gameState.equals(gameStates[2]))  { //if gameState = PLAYING
-            //    server.broadcast(playerString);
-
 
              if (message.startsWith("ADD USER")) {
                 if (players[2] != null) {
@@ -98,17 +81,7 @@ public class RunServerSide {
                             }
 
                         }
-                        //for(String player: players) {
-                        //    String[] playerArray = player.split(",");
-                        //    if(playerArray[0].equals(userActionArray[1])) {
-                        //        //increment x coordinate of light cycle selected by -1
-                        //        int newX = Integer.parseInt(playerArray[1]) - 1;
-                        //        int newY = Integer.parseInt(playerArray[2]);
-                        //        playerArray[1] = Integer.toString(newX);
-                        //        playerArray[2] = Integer.toString(newY);
-                        //        players[player.indexOf(player)] = playerArray[0] + "," + playerArray[1] + "," + playerArray[2]; //THIS THING DOESN'T WORK NEED TO USE INDEX THINGS
-                        //    }
-                        //}
+
                     } else if(userActionArray[3].equals("right")) {
                         for(int i = 0; i < players.length; i++) {
                             String[] playerArray = players[i].split(",");
@@ -123,17 +96,7 @@ public class RunServerSide {
                             }
 
                         }
-                        //for(String player: players) {
-                        //    String[] playerArray = player.split(",");
-                        //    if(playerArray[0].equals(userActionArray[1])) {
-                        //        //increment x coordinate of light cycle selected by +1
-                        //        int newX = Integer.parseInt(playerArray[1]) + 1;
-                        //        int newY = Integer.parseInt(playerArray[2]);
-                        //        playerArray[1] = Integer.toString(newX);
-                        //        playerArray[2] = Integer.toString(newY);
-                        //        players[player.indexOf(player)] = playerArray[0] + "," + playerArray[1] + "," + playerArray[2]; //THIS THING DOESN'T WORK NEED TO USE INDEX THINGS
-                        //    }
-                        //}
+
                     } else if(userActionArray[3].equals("up")) {
                         for(int i = 0; i < players.length; i++) {
                             String[] playerArray = players[i].split(",");
@@ -148,17 +111,7 @@ public class RunServerSide {
                             }
 
                         }
-                        //for(String player: players) {
-                        //    String[] playerArray = player.split(",");
-                        //    if(playerArray[0].equals(userActionArray[1])) {
-                        //        //increment y coordinate of light cycle selected by -1
-                        //        int newX = Integer.parseInt(playerArray[1]);
-                        //        int newY = Integer.parseInt(playerArray[2]) - 1;
-                        //        playerArray[1] = Integer.toString(newX);
-                        //        playerArray[2] = Integer.toString(newY);
-                        //        players[player.indexOf(player)] = playerArray[0] + "," + playerArray[1] + "," + playerArray[2]; //THIS THING DOESN'T WORK NEED TO USE INDEX THINGS
-                        //    }
-                        //}
+
                     } else if(userActionArray[3].equals("down")) {
                         for(int i = 0; i < players.length; i++) {
                             String[] playerArray = players[i].split(",");
@@ -173,22 +126,7 @@ public class RunServerSide {
                             }
 
                         }
-                        //for(String player: players) {
-                        //    String[] playerArray = player.split(",");
-                        //    if(playerArray[0].equals(userActionArray[1])) {
-                        //        //increment x coordinate of light cycle selected by +1
-                        //        int newX = Integer.parseInt(playerArray[1]);
-                        //        int newY = Integer.parseInt(playerArray[2]) + 1;
-                        //        playerArray[1] = Integer.toString(newX);
-                        //        playerArray[2] = Integer.toString(newY);
-                        //        players[player.indexOf(player)] = playerArray[0] + "," + playerArray[1] + "," + playerArray[2]; //THIS THING DOESN'T WORK NEED TO USE INDEX THINGS
-                        //    }
-                        //}
                     }
-
-                    //for (String player : players) {
-                    //    System.out.print(player + "-");
-                    //}
 
                     playerString = "";
                     for (String player : players) {
@@ -254,12 +192,6 @@ public class RunServerSide {
             } else if (message.startsWith("GAME LEADERBOARD")) {
 
             }
-
-            //for (String player : players) {
-            //    if(player != null) {
-            //        server.broadcast(player);
-            //    }
-            //}
         }
 
     }

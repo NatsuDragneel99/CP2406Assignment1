@@ -4,22 +4,18 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 public class GameFrame extends JFrame {
-    //GridTile[][] grid;
-    int gridHeight;
-    int gridWidth;
-    MenuPanel menuPanel;
-    GamePanel gamePanel;
-    //InetAddress address;
-    Client client;
-    final String SERVERIP = "10.140.33.237"; //IP of the multicast server being connected to.
-    final int CLIENTPORT = 49324; //Change for each individual client.
+    private int gridHeight;
+    private int gridWidth;
+    private MenuPanel menuPanel;
+    private GamePanel gamePanel;
+    private Client client;
+    private final String SERVERIP = "10.140.33.237"; //IP of the multicast server being connected to.
+    private final int CLIENTPORT = 49324; //Change for each individual client.
 
 
     GameFrame(int gridHeight, int gridWidth) throws UnknownHostException {
-        //setLayout(new FlowLayout());
         this.gridHeight = gridHeight;
         this.gridWidth = gridWidth;
-        //this.grid = new GridTile[gridHeight][gridWidth];
         setTitle("TRON");
         setSize(900, 900);
         setBackground(Color.BLACK);
@@ -27,28 +23,12 @@ public class GameFrame extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
-        //this.address = InetAddress.getByName(SERVERIP);
+
         try {
             this.client = new Client(CLIENTPORT);
         }catch (Exception e) {
             e.printStackTrace();
         }
-
-
-
-
-        //JPanel gamePanel = new JPanel();
-        //gamePanel.setLayout(new GridBagLayout());
-        //GridBagConstraints c = new GridBagConstraints();
-        //c.fill = GridBagConstraints.HORIZONTAL;
-        //JButton tile = new JButton();
-        ////GridTile tile = new GridTile();
-        //c.weightx = 0.5;
-        //c.gridx = 4;
-        //c.gridy = 8;
-        //gamePanel.add(tile, c);
-
-
 
     }
     void loadMenu() {
@@ -79,10 +59,4 @@ public class GameFrame extends JFrame {
         setVisible(true);
         return gamePanel;
     }
-
-    //public static void main(String[] args) {
-    //    GameFrame panel = new GameFrame(10, 10);
-//
-    //}
-
 }
