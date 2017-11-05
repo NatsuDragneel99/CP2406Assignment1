@@ -91,46 +91,48 @@ public class GamePanel extends JPanel implements ActionListener {
         //super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         String playerArray[] = playerString.trim().split("-");
-        for(int i = 0; i < 3; i++) {
-            String playerComponent[] = playerArray[i].trim().split(",");
+        for(String player : playerArray) {
+            String playerComponent[] = player.trim().split(",");
             String playerName = playerComponent[0].trim();
-            if(Integer.parseInt(playerComponent[1].trim()) < 0 || Integer.parseInt(playerComponent[2].trim()) < 0 || Integer.parseInt(playerComponent[1].trim()) > 900 || Integer.parseInt(playerComponent[2].trim()) > 900) {
-                if(playerName.equals(userName)) {
-                    t.stop();
-                    gameFrame.loadScoreBoard(score);
-                    for(int position : xPositions) {
-                        System.out.print(position + " ");
-                    }
-                    System.out.println("-----------");
-                    for(int position : yPositions) {
-                        System.out.print(position + " ");
-                    }
-                    System.out.println("-----------");
-                    for(int position : otherXPositions) {
-                        System.out.print(position + " ");
-                    }
-                    System.out.println("-----------");
-                    for(int position : otherYPositions) {
-                        System.out.print(position + " ");
-                    }
-                    System.out.println("-----------");
-                }
-            } else if(playerName.equals(userName)) {
-                //for(int f = 0; i < xPositions.length; i++) {
-                //    if (xPositions[f] != 0 && yPositions[f] != 0) {
-                //        g2d.setColor(Color.CYAN);
-                //        player = new Rectangle(xPositions[f], yPositions[f], 10, 10);
-                //        trails[f] = player;
-                //        g2d.fill(player);
-                //    }
-                //}
 
-                g2d.setColor(Color.CYAN);
-                g2d.fillRect(Integer.parseInt(playerComponent[1].trim()), Integer.parseInt(playerComponent[2].trim()), 10, 10);
-                score++;
-                //g2d.setColor(Color.CYAN);
-                g2d.setFont(new Font("TimesRoman", Font.PLAIN, 20));
-                g2d.drawString("Score: " + Integer.toString(score), 10, 20);
+            try {
+                if(Integer.parseInt(playerComponent[1].trim()) < 0 || Integer.parseInt(playerComponent[2].trim()) < 0 || Integer.parseInt(playerComponent[1].trim()) > 900 || Integer.parseInt(playerComponent[2].trim()) > 900) {
+                    if(playerName.equals(userName)) {
+                        t.stop();
+                        gameFrame.loadScoreBoard(score);
+                        for(int position : xPositions) {
+                            System.out.print(position + " ");
+                        }
+                        System.out.println("-----------");
+                        for(int position : yPositions) {
+                            System.out.print(position + " ");
+                        }
+                        System.out.println("-----------");
+                        for(int position : otherXPositions) {
+                            System.out.print(position + " ");
+                        }
+                        System.out.println("-----------");
+                        for(int position : otherYPositions) {
+                            System.out.print(position + " ");
+                        }
+                        System.out.println("-----------");
+                    }
+                } else if(playerName.equals(userName)) {
+                    //for(int f = 0; i < xPositions.length; i++) {
+                    //    if (xPositions[f] != 0 && yPositions[f] != 0) {
+                    //        g2d.setColor(Color.CYAN);
+                    //        player = new Rectangle(xPositions[f], yPositions[f], 10, 10);
+                    //        trails[f] = player;
+                    //        g2d.fill(player);
+                    //    }
+                    //}
+
+                    g2d.setColor(Color.CYAN);
+                    g2d.fillRect(Integer.parseInt(playerComponent[1].trim()), Integer.parseInt(playerComponent[2].trim()), 10, 10);
+                    score++;
+                    //g2d.setColor(Color.CYAN);
+                    g2d.setFont(new Font("TimesRoman", Font.PLAIN, 20));
+                    g2d.drawString("Score: " + Integer.toString(score), 10, 20);
 
                 } else {
                     try {
@@ -139,7 +141,12 @@ public class GamePanel extends JPanel implements ActionListener {
                     } catch(Exception e) {
                         System.out.println("Other player crashed");
                     }
+                }
+            } catch(Exception f) {
+                t.stop();
+                gameFrame.loadScoreBoard(score);
             }
+
         }
     }
 
